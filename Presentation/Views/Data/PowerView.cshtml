@@ -25,10 +25,19 @@
     foreach (var elem2 in elem.Value)
     {
         <h2> Datum: @elem2.Key.year @elem2.Key.month @elem2.Key.day</h2>
-        <h2> Hour: @elem2.Key.hour</h2>
-        <h2> Effekt: @elem2.Value </h2>
+        <h2> Timme: @elem2.Key.hour</h2>
+        if (elem2.Value > 1000000)
+        {
+            <h2> Effekt (MWh): @(elem2.Value/1000000)</h2>
+        }
+        else if (elem2.Value > 1000)
+        {
+            <h2> Effekt (KWh): @elem2.Value</h2>
+        }
+        else if (elem2.Value < 1000)
+        {
+            <h2> Effekt (Wh): @(elem2.Value/1000)</h2>
+        }
     }
-
-
 }
 

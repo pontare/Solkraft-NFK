@@ -1,0 +1,34 @@
+﻿@using Data
+@using Logic
+
+@model Dictionary<string, Dictionary<Date, double>>
+@{
+    Dictionary<string, string> monthDict = new Dictionary<string, string>();
+    monthDict.Add("01", "Januari");
+    monthDict.Add("02", "Februari");
+    monthDict.Add("03", "Mars");
+    monthDict.Add("04", "April");
+    monthDict.Add("05", "Maj");
+    monthDict.Add("06", "Juni");
+    monthDict.Add("07", "Juli");
+    monthDict.Add("08", "Augusti");
+    monthDict.Add("09", "September");
+    monthDict.Add("10", "Oktober");
+    monthDict.Add("11", "November");
+    monthDict.Add("12", "December");
+
+}
+<h1>Effekt per kommun</h1><br />
+@foreach (var elem in Model)
+{
+    <h2> Kommun: @elem.Key</h2>
+    foreach (var elem2 in elem.Value)
+    {
+        <h2> Datum: @elem2.Key.year @elem2.Key.month @elem2.Key.day</h2>
+        <h2> Hour: @elem2.Key.hour</h2>
+        <h2> Effekt: @elem2.Value </h2>
+    }
+
+
+}
+

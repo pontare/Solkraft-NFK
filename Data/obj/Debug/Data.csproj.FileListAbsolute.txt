@@ -1,0 +1,6 @@
+C:\Users\famat\source\repos\MVP Solkalk\Data\bin\Debug\Data.dll
+C:\Users\famat\source\repos\MVP Solkalk\Data\bin\Debug\Data.pdb
+C:\Users\famat\source\repos\MVP Solkalk\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\famat\source\repos\MVP Solkalk\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
+C:\Users\famat\source\repos\MVP Solkalk\Data\obj\Debug\Data.dll
+C:\Users\famat\source\repos\MVP Solkalk\Data\obj\Debug\Data.pdb

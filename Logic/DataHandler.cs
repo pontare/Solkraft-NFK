@@ -14,7 +14,7 @@ namespace Logic
         static public Dictionary<Date, float> GetIrradianceDict()
         {
             Dictionary<Date, float> dataDict = new Dictionary<Date, float>();
-            string irradianceData = DataGetter.GetIrrradianceData();
+            string irradianceData = DataAccesser.GetIrrradianceData();
             string[] dataLines = irradianceData.Split('\n');
 
             foreach  (var elem in dataLines)
@@ -23,6 +23,7 @@ namespace Logic
                 {
                     string[] data = elem.Split(' ');
                     Date dataDate = new Date();
+                    dataDate.date = elem;
                     dataDate.year = data[0];
                     dataDate.month = data[1];
                     dataDate.day = data[2];
@@ -36,7 +37,7 @@ namespace Logic
         static public Dictionary<string, float> GetInstalledPowerDict()
         {
             Dictionary<string, float> dataDict = new Dictionary<string, float>();
-            string data = DataGetter.GetInstalledPowerData();
+            string data = DataAccesser.GetInstalledPowerData();
             string[] dataLines = data.Split('\n');
             foreach (var elem in dataLines)
             {
@@ -50,7 +51,7 @@ namespace Logic
             return dataDict;
         }
 
-        static public Dictionary<string, Dictionary<Date, double>> CalculateProducedPower()
+        static public void CalculateProducedPower()
         {
             Dictionary<string, Dictionary<Date, double>> munDict = 
                 new Dictionary<string, Dictionary<Date, double>>();
@@ -67,7 +68,48 @@ namespace Logic
                 }
                 munDict[municipality.Key] = powerDict;   
             }
-            return munDict;
+            DataAccesser.AddPowerRecord(munDict);
+        }
+
+        static public List<ProducedPower> GetProducedPowerOfPastWeek(string date, string kommun = null)
+        {
+            Date formattedDate = new Date();
+            formattedDate.date = date;
+            formattedDate.day = date.Split()[2];
+            formattedDate.month = date.Split()[1];
+            formattedDate.year = date.Split()[0];
+            formattedDate.hour = date.Split()[3];
+            return DataAccesser.GetProducedPowerOfPastWeek(formattedDate, kommun);
+        }
+        static public List<ProducedPower> GetTotalProducedPower(string kommun = null)
+        {
+            return DataAccesser.GetTotalProducedPower(kommun);
+        }
+        static public List<ProducedPower> GetProducedPowerOfDay(string date, string kommun)
+        {
+            Date formattedDate = new Date();
+            var year = date.Split()[0];
+            var month = date.Split()[1];
+            var day = date.Split()[2];
+            var hour = date.Split()[3];
+            if(Int32.Parse(month) < 10)
+            {
+                month = "0" + month;
+            }
+            if (Int32.Parse(day) < 10)
+            {
+                day = "0" + day;
+            }
+            if (Int32.Parse(hour) < 10)
+            {
+                hour = "0" + hour;
+            }
+            formattedDate.year = year;
+            formattedDate.month = month;
+            formattedDate.day = day;
+            formattedDate.hour = hour;
+            formattedDate.date = String.Format("{0} {1} {2} {3}", year, month, day, hour);
+            return DataAccesser.GetProducedPowerOfDay(formattedDate, kommun);
         }
     }
 }

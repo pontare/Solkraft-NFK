@@ -41,11 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataHandler.cs" />
+    <Compile Include="HandledData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
-      <Project>{861c5f95-3a17-4bb8-9110-b9ad3de9ce26}</Project>
+      <Project>{7f0aa0f6-3427-4abb-9168-e88fcdf6a018}</Project>
       <Name>Data</Name>
     </ProjectReference>
   </ItemGroup>

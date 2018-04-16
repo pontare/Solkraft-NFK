@@ -42,19 +42,19 @@ namespace Data
         }
         static public string GetInstalledPowerData()
         {
-            string data = @" Aneby 249000
-                            Tranås 527000
-                            Nässjö 1020000
-                            Eksjö 532000
-                            Vetlanda 1320000
-                            Sävsjö 591000
-                            Värnamo 1788000
-                            Gislaved 1080000
-                            Gnosjö 243000
-                            Vaggeryd 406000
-                            Jönköping 3952000
-                            Habo 176000
-                            Mullsjö 358000 ";
+            string data = @"Aneby 249000
+Tranås 527000
+Nässjö 1020000
+Eksjö 532000
+Vetlanda 1320000
+Sävsjö 591000
+Värnamo 1788000
+Gislaved 1080000
+Gnosjö 243000
+Vaggeryd 406000
+Jönköping 3952000
+Habo 176000
+Mullsjö 358000";
             return data;
         }
 
@@ -74,10 +74,10 @@ namespace Data
                     {
                         dayto =- 7;
                     }
-                    var query = from power in db.ProducedPowers
-                                where (Int32.Parse(power.Day) <= Int32.Parse(date.day) && Int32.Parse(power.Day) > dayto)
-                                && power.Kommun == kommun
-                                orderby Int32.Parse(power.Day) descending
+                    var query = from power in db.ProducedPowers.ToList()
+                                let Day = Convert.ToInt32(power.Day)
+                                where (Day <= day && Day > dayto) && power.Kommun == kommun
+                                orderby Day descending
                                 select power;
                     return query.ToList();
                 }
@@ -91,11 +91,12 @@ namespace Data
                     }
                     else
                     {
-                        dayto = -7;
+                        dayto = day - 7;
                     }
-                    var query = from power in db.ProducedPowers
-                                where (Int32.Parse(power.Day) <= Int32.Parse(date.day) && Int32.Parse(power.Day) > dayto)
-                                orderby Int32.Parse(power.Day) descending
+                    var query = from power in db.ProducedPowers.ToList()
+                                let Day = Int32.Parse(power.Day)
+                                where (Day <= day && Day > dayto)
+                                orderby Day descending
                                 select power;
                     return query.ToList();
                 }
@@ -148,7 +149,10 @@ namespace Data
                 {
                     var powerRecord = new ProducedPower();
                     powerRecord.Kommun = elem.Key;
-                    powerRecord.Day = elem2.Key.date;
+                    powerRecord.Year = elem2.Key.year;
+                    powerRecord.Month = elem2.Key.month;
+                    powerRecord.Day = elem2.Key.day;
+                    powerRecord.Hour = elem2.Key.hour;
                     powerRecord.Energi = elem2.Value;
                     using (var db = new SolkalkDbEntities1())
                     {

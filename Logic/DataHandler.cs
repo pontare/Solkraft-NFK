@@ -38,13 +38,13 @@ namespace Logic
         {
             Dictionary<string, float> dataDict = new Dictionary<string, float>();
             string data = DataAccesser.GetInstalledPowerData();
-            string[] dataLines = data.Split('\n');
+            string[] dataLines = data.Split('\r', '\n');
             foreach (var elem in dataLines)
             {
                 if(elem != "" && elem != "\r")
                 {
                     string[] dataLine = elem.Split(' ');
-                    dataDict[dataLine[0]] = float.Parse(dataLine[1], CultureInfo.InvariantCulture.NumberFormat);
+                    dataDict[dataLine[0]] = Int32.Parse(dataLine[1]);
                 }
                 
             }
@@ -73,26 +73,25 @@ namespace Logic
 
         static public List<ProducedPower> GetProducedPowerOfPastWeek(string date, string kommun = null)
         {
-            Date formattedDate = new Date();
-            formattedDate.date = date;
-            formattedDate.day = date.Split()[2];
-            formattedDate.month = date.Split()[1];
-            formattedDate.year = date.Split()[0];
-            formattedDate.hour = date.Split()[3];
-            return DataAccesser.GetProducedPowerOfPastWeek(formattedDate, kommun);
+            return DataAccesser.GetProducedPowerOfPastWeek(ConvertDate(date), kommun);
         }
         static public List<ProducedPower> GetTotalProducedPower(string kommun = null)
         {
             return DataAccesser.GetTotalProducedPower(kommun);
         }
-        static public List<ProducedPower> GetProducedPowerOfDay(string date, string kommun)
+        static public List<ProducedPower> GetProducedPowerOfDay(string date, string kommun = null)
+        {
+
+            return DataAccesser.GetProducedPowerOfDay(ConvertDate(date), kommun);
+        }
+        static private Date ConvertDate(string date)
         {
             Date formattedDate = new Date();
             var year = date.Split()[0];
             var month = date.Split()[1];
             var day = date.Split()[2];
             var hour = date.Split()[3];
-            if(Int32.Parse(month) < 10)
+            if (Int32.Parse(month) < 10)
             {
                 month = "0" + month;
             }
@@ -109,7 +108,7 @@ namespace Logic
             formattedDate.day = day;
             formattedDate.hour = hour;
             formattedDate.date = String.Format("{0} {1} {2} {3}", year, month, day, hour);
-            return DataAccesser.GetProducedPowerOfDay(formattedDate, kommun);
+            return formattedDate;
         }
     }
 }

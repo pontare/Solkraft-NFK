@@ -3,14 +3,39 @@
 
 @model List<ProducedPower>
 
-@{ 
+@{
     double totalenergi = 0;
+    List<string> Kommuner = new List<string>() { "Aneby", "Tranås", "Nässjö", "Eksjö", "Vetlanda", "Sävsjö", "Värnamo", "Gislaved", "Vaggeryd", "Jönköping", "Habo", "Mullsjö" };
 }
 
-<h1>Effekt per kommun</h1><br />
-@foreach (var elem in Model)
-{
-    totalenergi += elem.Energi;
-}
+
+
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Välj Kommun
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        @foreach(var elem in Kommuner)
+        {
+            <li> <a href="/Data/ChooseMunicipality/@elem"> @elem </a>  </li>
+        }
+
+    </ul>
+</div>
+
+
+<div class="PowerDiv">
+    <ul class="nav nav-tabs">
+        <li> <a href="/Data/ShowPowerOfDay"> Show power of past day </a> </li>
+        <li> <a href="/Data/ShowPowerOfPastWeek"> Show power of past week </a> </li>
+        <li> <a href="/Data/ShowTotalPower"> Show total power    </a> </li>
+        <li> <a href="/Data/Recalculate"> Recalculate </a></li>
+    </ul>
+    @foreach (var elem in Model)
+    {
+        totalenergi += elem.Energi;
+    }
+</div>
+
 
 <h2> Total Energi: @totalenergi </h2>

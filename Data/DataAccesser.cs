@@ -58,41 +58,32 @@ Mullsjö 358000";
             return data;
         }
 
+        private static bool isInWeek(int daystart, int actualDay , int dayto)
+        {
+            return actualDay <= daystart && actualDay > dayto;
+        }
+
         static public List<ProducedPower> GetProducedPowerOfPastWeek(Date date, string kommun = null)
         {
             using (var db = new SolkalkDbEntities1())
             {
-                if(kommun != "" && kommun != null)
+                var day = (Int32.Parse(date.day));
+                var dayto = day - 7;
+                if (dayto <= 0)
                 {
-                    var day = (Int32.Parse(date.day));
-                    var dayto = 0;
-                    if (day - 7 <= 0)
-                    {
-                        dayto = 1;
-                    }
-                    else
-                    {
-                        dayto =- 7;
-                    }
+                    dayto = 1;
+                }
+                if (kommun != "" && kommun != null)
+                {
                     var query = from power in db.ProducedPowers.ToList()
                                 let Day = Convert.ToInt32(power.Day)
-                                where (Day <= day && Day > dayto) && power.Kommun == kommun
+                                where power.Kommun.Contains(kommun)
                                 orderby Day descending
                                 select power;
                     return query.ToList();
                 }
                 else
                 {
-                    var day = (Int32.Parse(date.day));
-                    var dayto = 0;
-                    if (day - 7 <= 0)
-                    {
-                        dayto = 1;
-                    }
-                    else
-                    {
-                        dayto = day - 7;
-                    }
                     var query = from power in db.ProducedPowers.ToList()
                                 let Day = Int32.Parse(power.Day)
                                 where (Day <= day && Day > dayto)
@@ -156,8 +147,15 @@ Mullsjö 358000";
                     powerRecord.Energi = elem2.Value;
                     using (var db = new SolkalkDbEntities1())
                     {
-                        db.ProducedPowers.Add(powerRecord);
-                        db.SaveChanges();
+                        try
+                        {
+                            db.ProducedPowers.Add(powerRecord);
+                            db.SaveChanges();
+                        }
+                        catch(System.Data.Entity.Infrastructure.DbUpdateException e) when (e.InnerException.ToString().Contains("UNIQUE"))
+                        {
+
+                        }
                     }
                 }
             }

@@ -24,3 +24,212 @@ C:\Users\famat\source\repos\MVP Solkalk\Presentation\obj\Debug\Presentation.cspr
 C:\Users\famat\source\repos\MVP Solkalk\Presentation\obj\Debug\Presentation.csproj.CoreCompileInputs.cache
 C:\Users\famat\source\repos\MVP Solkalk\Presentation\obj\Debug\Presentation.dll
 C:\Users\famat\source\repos\MVP Solkalk\Presentation\obj\Debug\Presentation.pdb
+C:\Users\famat\source\repos\MVP Solkalk\Presentation\bin\EntityFramework.dll
+C:\Users\famat\source\repos\MVP Solkalk\Presentation\bin\Data.dll.config
+C:\Users\famat\source\repos\MVP Solkalk\Presentation\bin\EntityFramework.xml
+C:\Users\famat\source\repos\MVP Solkalk\Presentation\obj\Debug\Presentation.csproj.CopyComplete
+C:\Users\famat\source\repos\MVP Solkalk\Presentation\bin\EntityFramework.SqlServer.dll
+C:\Users\famat\source\repos\MVP Solkalk\Presentation\bin\EntityFramework.SqlServer.xml
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\Presentation.dll.config
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\Presentation.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\Presentation.pdb
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\Data.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\Logic.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\System.Web.Helpers.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\System.Web.Mvc.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\System.Web.Razor.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\System.Web.Webpages.Deployment.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\System.Web.Webpages.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\System.Web.Webpages.Razor.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\EntityFramework.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\EntityFramework.SqlServer.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\Data.pdb
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\Data.dll.config
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\Logic.pdb
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\System.Web.Razor.xml
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\System.Web.Webpages.xml
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\System.Web.Webpages.Deployment.xml
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\System.Web.Webpages.Razor.xml
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\System.Web.Helpers.xml
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\System.Web.Mvc.xml
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\EntityFramework.xml
+C:\Users\ponta\Desktop\solkraft\Presentation\bin\EntityFramework.SqlServer.xml
+C:\Users\ponta\Desktop\solkraft\Presentation\obj\Debug\Presentation.csprojResolveAssemblyReference.cache
+C:\Users\ponta\Desktop\solkraft\Presentation\obj\Debug\Presentation.csproj.CoreCompileInputs.cache
+C:\Users\ponta\Desktop\solkraft\Presentation\obj\Debug\Presentation.csproj.CopyComplete
+C:\Users\ponta\Desktop\solkraft\Presentation\obj\Debug\Presentation.dll
+C:\Users\ponta\Desktop\solkraft\Presentation\obj\Debug\Presentation.pdb
+D:\NFK_NFK\Presentation\bin\Presentation.dll.config
+D:\NFK_NFK\Presentation\bin\Presentation.dll
+D:\NFK_NFK\Presentation\bin\Presentation.pdb
+D:\NFK_NFK\Presentation\bin\Data.dll
+D:\NFK_NFK\Presentation\bin\Logic.dll
+D:\NFK_NFK\Presentation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\NFK_NFK\Presentation\bin\Microsoft.Web.Infrastructure.dll
+D:\NFK_NFK\Presentation\bin\System.Web.Helpers.dll
+D:\NFK_NFK\Presentation\bin\System.Web.Mvc.dll
+D:\NFK_NFK\Presentation\bin\System.Web.Razor.dll
+D:\NFK_NFK\Presentation\bin\System.Web.Webpages.Deployment.dll
+D:\NFK_NFK\Presentation\bin\System.Web.Webpages.dll
+D:\NFK_NFK\Presentation\bin\System.Web.Webpages.Razor.dll
+D:\NFK_NFK\Presentation\bin\EntityFramework.dll
+D:\NFK_NFK\Presentation\bin\EntityFramework.SqlServer.dll
+D:\NFK_NFK\Presentation\bin\Data.pdb
+D:\NFK_NFK\Presentation\bin\Data.dll.config
+D:\NFK_NFK\Presentation\bin\Logic.pdb
+D:\NFK_NFK\Presentation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\NFK_NFK\Presentation\bin\System.Web.Razor.xml
+D:\NFK_NFK\Presentation\bin\System.Web.Webpages.xml
+D:\NFK_NFK\Presentation\bin\System.Web.Webpages.Deployment.xml
+D:\NFK_NFK\Presentation\bin\System.Web.Webpages.Razor.xml
+D:\NFK_NFK\Presentation\bin\System.Web.Helpers.xml
+D:\NFK_NFK\Presentation\bin\System.Web.Mvc.xml
+D:\NFK_NFK\Presentation\bin\EntityFramework.xml
+D:\NFK_NFK\Presentation\bin\EntityFramework.SqlServer.xml
+D:\NFK_NFK\Presentation\obj\Debug\Presentation.csprojResolveAssemblyReference.cache
+D:\NFK_NFK\Presentation\obj\Debug\Presentation.csproj.CoreCompileInputs.cache
+D:\NFK_NFK\Presentation\obj\Debug\Presentation.csproj.CopyComplete
+D:\NFK_NFK\Presentation\obj\Debug\Presentation.dll
+D:\NFK_NFK\Presentation\obj\Debug\Presentation.pdb
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Presentation.dll.config
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Presentation.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Presentation.pdb
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Microsoft.Win32.Primitives.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\netstandard.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.AppContext.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Collections.Concurrent.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Collections.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Collections.NonGeneric.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Collections.Specialized.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.ComponentModel.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.ComponentModel.EventBasedAsync.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.ComponentModel.Primitives.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.ComponentModel.TypeConverter.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Console.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Data.Common.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Diagnostics.Contracts.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Diagnostics.Debug.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Diagnostics.Process.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Diagnostics.StackTrace.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Diagnostics.TextWriterTraceListener.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Diagnostics.Tools.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Diagnostics.TraceSource.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Diagnostics.Tracing.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Drawing.Primitives.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Dynamic.Runtime.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Globalization.Calendars.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Globalization.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Globalization.Extensions.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.IO.Compression.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.IO.Compression.ZipFile.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.IO.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.IO.FileSystem.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.IO.FileSystem.DriveInfo.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.IO.FileSystem.Primitives.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.IO.FileSystem.Watcher.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.IO.IsolatedStorage.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.IO.MemoryMappedFiles.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.IO.Pipes.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.IO.UnmanagedMemoryStream.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Linq.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Linq.Expressions.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Linq.Parallel.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Linq.Queryable.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Net.Http.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Net.NameResolution.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Net.NetworkInformation.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Net.Ping.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Net.Primitives.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Net.Requests.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Net.Security.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Net.Sockets.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Net.WebHeaderCollection.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Net.WebSockets.Client.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Net.WebSockets.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.ObjectModel.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Reflection.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Reflection.Extensions.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Reflection.Primitives.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Resources.Reader.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Resources.ResourceManager.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Resources.Writer.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Runtime.CompilerServices.VisualC.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Runtime.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Runtime.Extensions.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Runtime.Handles.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Runtime.InteropServices.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Runtime.Numerics.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Runtime.Serialization.Formatters.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Runtime.Serialization.Json.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Runtime.Serialization.Primitives.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Runtime.Serialization.Xml.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Security.Claims.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Security.Cryptography.Algorithms.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Security.Cryptography.Csp.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Security.Cryptography.Encoding.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Security.Cryptography.Primitives.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Security.Principal.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Security.SecureString.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Text.Encoding.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Text.Encoding.Extensions.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Text.RegularExpressions.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Threading.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Threading.Overlapped.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Threading.Tasks.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Threading.Tasks.Parallel.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Threading.Thread.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Threading.ThreadPool.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Threading.Timer.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.ValueTuple.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Xml.ReaderWriter.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Xml.XDocument.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Xml.XmlDocument.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Xml.XmlSerializer.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Xml.XPath.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Xml.XPath.XDocument.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Amazon.Core.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Amazon.Lambda.Core.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Amazon.Lambda.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Carbon.Json.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Data.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Logic.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Text.Encodings.Web.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Web.Helpers.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Web.Mvc.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Web.Razor.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Web.Webpages.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Web.Webpages.Razor.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\EntityFramework.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\EntityFramework.SqlServer.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Data.pdb
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Data.dll.config
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Logic.pdb
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Amazon.Lambda.Core.pdb
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Amazon.Lambda.Core.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Text.Encodings.Web.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Web.Razor.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Web.Webpages.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Web.Webpages.Razor.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Web.Helpers.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\System.Web.Mvc.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\EntityFramework.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\EntityFramework.SqlServer.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\obj\Debug\Presentation.csprojResolveAssemblyReference.cache
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\obj\Debug\Presentation.csproj.CoreCompileInputs.cache
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\obj\Debug\Presentation.csproj.CopyComplete
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\obj\Debug\Presentation.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\obj\Debug\Presentation.pdb
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\bin\App_LocalResources\Resources.resx
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\obj\Debug\Presentation.App_LocalResources.Resources.resources
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Presentation\obj\Debug\Presentation.csproj.GenerateResource.cache

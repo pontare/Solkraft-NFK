@@ -1,43 +1,145 @@
 ﻿@using Data
-@using Logic
+@using System.Resources
+@using System.Globalization
+@using System.Drawing;
+@using System.Collections
+@using Resources;
 
-@model Dictionary<string, Dictionary<Date, double>>
-@{
-    Dictionary<string, string> monthDict = new Dictionary<string, string>();
-    monthDict.Add("01", "Januari");
-    monthDict.Add("02", "Februari");
-    monthDict.Add("03", "Mars");
-    monthDict.Add("04", "April");
-    monthDict.Add("05", "Maj");
-    monthDict.Add("06", "Juni");
-    monthDict.Add("07", "Juli");
-    monthDict.Add("08", "Augusti");
-    monthDict.Add("09", "September");
-    monthDict.Add("10", "Oktober");
-    monthDict.Add("11", "November");
-    monthDict.Add("12", "December");
+@model List<ProducedPower>
+
+@helper DisplayActive()
+    {
+        if ((string)Session["ChosenACtion"] == "ShowTotalPower")
+        {
+            <li class="active"><a href="/Data/ShowTotalPower"> Visa totalt </a></li>
+        }
+        else if ((string)Session["ChosenACtion"] != "ShowTotalPower")
+        {
+            <li><a href="/Data/ShowTotalPower"> Visa totalt </a></li>
+        }
+        if ((string)Session["ChosenACtion"] == "ShowPowerOfPastWeek")
+        {
+            <li class="active"><a href="/Data/ShowPowerOfPastWeek"> Visa senaste veckan </a></li>
+        }
+        else if ((string)Session["ChosenACtion"] != "ShowPowerOfPastWeek")
+        {
+            <li><a href="/Data/ShowPowerOfPastWeek"> Visa senaste veckan </a></li>
+        }
+        if ((string)Session["ChosenACtion"] == "ShowPowerOfDay")
+        {
+            <li class="active"><a href="/Data/ShowPowerOfDay"> Visa senaste dagen </a></li>
+        }
+        else if ((string)Session["ChosenACtion"] != "ShowPowerOfDay")
+        {
+            <li><a href="/Data/ShowPowerOfDay"> Visa senaste dagen </a></li>
+        }
+}
+
+@helper DisplayEnergy()
+    {
+        double totalenergi = 0;
+        foreach (var elem in Model)
+        {
+            totalenergi += elem.Energi;
+        }
+        if ((string)Session["chosenACtion"] == "ShowTotalPower")
+        {
+            <h2>Energi genererad totalt:</h2>
+        }
+        else if ((string)Session["chosenACtion"] == "ShowPowerOfPastWeek")
+        {
+            <h2>Energi genererad senaste veckan:</h2>
+        }
+        else if ((string)Session["chosenACtion"] == "ShowPowerOfDay")
+        {
+            <h2>Energi genererad senaste dagen:</h2>
+        }
+        else if ((string)Session["chosenACtion"] == "Recalculate")
+        {
+            <h2>Total energi:</h2>
+        }
+        if (totalenergi > 1000000000)
+        {
+            <h2> @Math.Round(totalenergi / 1000000000, 2) GWh </h2>
+        }
+        else if (totalenergi > 1000000)
+        {
+            <h2> @Math.Round(totalenergi / 1000000, 2) MWh </h2>
+        }
+        else if (totalenergi > 1000)
+        {
+            <h2> @Math.Round(totalenergi / 1000, 1) kWh </h2>
+        }
+        else if (totalenergi > 1000)
+        {
+            < h2 > @Math.Round(totalenergi) Wh </ h2 >
+        }
+}
+
+@helper DisplayMap()
+    {
+        ResourceSet resourceSet = Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
+        foreach (DictionaryEntry elem in resourceSet)
+        {
+            var kommun = Session["kommun"];
+            if ((string)elem.Key == (string)Session["kommun"] || (Session["kommun"] == null && (string)elem.Key == "alla_kommuner"))
+            {
+                ImageConverter converter = new ImageConverter();
+                byte[] imagebytes = (byte[])converter.ConvertTo(elem.Value, typeof(byte[]));
+                <img src="@String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(imagebytes))" class="img-responsive img-rounded" />
+            }
+        }
 
 }
-<h1>Effekt per kommun</h1><br />
-@foreach (var elem in Model)
+
+@helper GenerateDropdownContents()
 {
-    <h2> Kommun: @elem.Key</h2>
-    foreach (var elem2 in elem.Value)
+    List<string> Kommuner = new List<string>() { "Aneby", "Tranås", "Nässjö", "Eksjö", "Vetlanda", "Sävsjö", "Värnamo", "Gislaved", "Vaggeryd", "Jönköping", "Habo", "Mullsjö", "Hela Länet" };
+    foreach (var elem in Kommuner)
     {
-        <h2> Datum: @elem2.Key.year @elem2.Key.month @elem2.Key.day</h2>
-        <h2> Timme: @elem2.Key.hour</h2>
-        if (elem2.Value > 1000000)
+        if (elem == "Hela Länet")
         {
-            <h2> Effekt (MWh): @(elem2.Value/1000000)</h2>
+            <li> <a href="/Data/ChooseMunicipality/"> @elem </a>  </li>
         }
-        else if (elem2.Value > 1000)
+        else
         {
-            <h2> Effekt (KWh): @elem2.Value</h2>
-        }
-        else if (elem2.Value < 1000)
-        {
-            <h2> Effekt (Wh): @(elem2.Value/1000)</h2>
+            <li> <a href="/Data/ChooseMunicipality/@elem"> @elem </a>  </li>
         }
     }
 }
 
+<!--------HTML CODE BEGINS HERE---------->
+
+<div class="row container">
+    <div class=" col-sm-5">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style=" background-color:rgb(0, 153, 51)">
+                Välj Kommun
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                @GenerateDropdownContents()
+            </ul>
+        </div>
+        @DisplayMap()
+    </div>
+    <div class=" col-sm-7">
+        <ul class="nav nav-tabs">
+            @DisplayActive()
+        </ul>
+        @if (Session["kommun"] == null)
+        {
+            <h3>Jönköpings Län</h3>
+        }
+        else
+        {
+            <h3>@((string)Session["kommun"])</h3>
+        }
+        @DisplayEnergy()
+        <br />
+        <button data-toggle="collapse" data-target="#info">Hur det fungerar</button>
+        <div id="info" class="collapse">
+            Effekten är estemerad genom att...
+        </div>
+    </div>
+</div>

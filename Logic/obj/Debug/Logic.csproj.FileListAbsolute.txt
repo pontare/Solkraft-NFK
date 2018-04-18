@@ -6,3 +6,41 @@ C:\Users\famat\source\repos\MVP Solkalk\Logic\obj\Debug\Logic.csprojResolveAssem
 C:\Users\famat\source\repos\MVP Solkalk\Logic\obj\Debug\Logic.csproj.CoreCompileInputs.cache
 C:\Users\famat\source\repos\MVP Solkalk\Logic\obj\Debug\Logic.dll
 C:\Users\famat\source\repos\MVP Solkalk\Logic\obj\Debug\Logic.pdb
+C:\Users\famat\source\repos\MVP Solkalk\Logic\bin\Debug\EntityFramework.dll
+C:\Users\famat\source\repos\MVP Solkalk\Logic\bin\Debug\Data.dll.config
+C:\Users\famat\source\repos\MVP Solkalk\Logic\bin\Debug\EntityFramework.xml
+C:\Users\famat\source\repos\MVP Solkalk\Logic\obj\Debug\Logic.csproj.CopyComplete
+C:\Users\famat\source\repos\MVP Solkalk\Logic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\famat\source\repos\MVP Solkalk\Logic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ponta\Desktop\solkraft\Logic\bin\Debug\Logic.dll
+C:\Users\ponta\Desktop\solkraft\Logic\bin\Debug\Logic.pdb
+C:\Users\ponta\Desktop\solkraft\Logic\bin\Debug\Data.dll
+C:\Users\ponta\Desktop\solkraft\Logic\bin\Debug\EntityFramework.dll
+C:\Users\ponta\Desktop\solkraft\Logic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ponta\Desktop\solkraft\Logic\bin\Debug\Data.pdb
+C:\Users\ponta\Desktop\solkraft\Logic\bin\Debug\Data.dll.config
+C:\Users\ponta\Desktop\solkraft\Logic\bin\Debug\EntityFramework.xml
+C:\Users\ponta\Desktop\solkraft\Logic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ponta\Desktop\solkraft\Logic\obj\Debug\Logic.csprojResolveAssemblyReference.cache
+C:\Users\ponta\Desktop\solkraft\Logic\obj\Debug\Logic.csproj.CoreCompileInputs.cache
+C:\Users\ponta\Desktop\solkraft\Logic\obj\Debug\Logic.csproj.CopyComplete
+C:\Users\ponta\Desktop\solkraft\Logic\obj\Debug\Logic.dll
+C:\Users\ponta\Desktop\solkraft\Logic\obj\Debug\Logic.pdb
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\Logic.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\Logic.pdb
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\Amazon.Lambda.Core.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\Data.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\System.Console.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\EntityFramework.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\Data.pdb
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\Data.dll.config
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\Amazon.Lambda.Core.pdb
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\Amazon.Lambda.Core.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\EntityFramework.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\obj\Debug\Logic.csprojResolveAssemblyReference.cache
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\obj\Debug\Logic.csproj.CoreCompileInputs.cache
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\obj\Debug\Logic.csproj.CopyComplete
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\obj\Debug\Logic.dll
+C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\obj\Debug\Logic.pdb

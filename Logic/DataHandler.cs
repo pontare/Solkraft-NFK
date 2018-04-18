@@ -64,7 +64,7 @@ namespace Logic
                 foreach (var irradiance in irradianceDict)
                 {
                     var area = municipality.Value / (0.15 * 1000); //Kommunal installerad effekt/(verkningsgrad * Irradians vid STC)
-                    powerDict[irradiance.Key] = irradiance.Value * 3600 * 0.15 * 0.9 * area;
+                    powerDict[irradiance.Key] = irradiance.Value * 0.15 * 0.9 * area;
                 }
                 munDict[municipality.Key] = powerDict;   
             }

@@ -5,10 +5,10 @@
 
 @{
     double totalenergi = 0;
-    List<string> Kommuner = new List<string>() { "Aneby", "Tranås", "Nässjö", "Eksjö", "Vetlanda", "Sävsjö", "Värnamo", "Gislaved", "Vaggeryd", "Jönköping", "Habo", "Mullsjö" };
+    List<string> Kommuner = new List<string>() { "Aneby", "Tranås", "Nässjö", "Eksjö", "Vetlanda", "Sävsjö", "Värnamo", "Gislaved", "Vaggeryd", "Jönköping", "Habo", "Mullsjö", "Hela Länet" };
 }
 <div class="row">
-    <div class=" col-sm-2">
+    <div class=" col-sm-5">
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style=" background-color:rgb(0, 153, 51)">
                 Välj Kommun
@@ -17,11 +17,60 @@
             <ul class="dropdown-menu">
                 @foreach (var elem in Kommuner)
                 {
-                    <li> <a href="/Data/ChooseMunicipality/@elem"> @elem </a>  </li>
+                    if (elem == "Hela Länet") {
+                        <li> <a href="/Data/ChooseMunicipality/"> @elem </a>  </li>    
+                    }
+                    else {
+                        <li> <a href="/Data/ChooseMunicipality/@elem"> @elem </a>  </li>
+                    }
                 }
 
             </ul>
         </div>
+
+        @if ((string)Session["kommun"] == null) {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/alla_kommuner.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Aneby") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/aneby.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Tranås") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/tranås.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Nässjö") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/nässjö.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Eksjö") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/eksjö.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Vetlanda") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/vetlanda.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Sävsjö") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/sävsjö.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Värnamo") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/värnamo.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Gislaved") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/gislaved.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Gnosjö") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/gnosjö.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Vaggeryd") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/vaggeryd.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Jönköping") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/jönköping.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Habo") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/habo.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }
+        @if ((string)Session["kommun"] == "Mullsjö") {
+            <img src="file:///D:/NFK_NFK/bilder_kommuner/mullsjö.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        }   
+
     </div>
     <div class=" col-sm-7">
         <ul class="nav nav-tabs">

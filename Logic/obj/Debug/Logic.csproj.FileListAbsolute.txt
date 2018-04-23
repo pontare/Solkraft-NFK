@@ -44,3 +44,21 @@ C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\obj\Debug\Log
 C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\obj\Debug\Logic.csproj.CopyComplete
 C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\obj\Debug\Logic.dll
 C:\Users\Filip Mattsson\Google Drive\NFK\Solkalk\MVP Solkalk\Logic\obj\Debug\Logic.pdb
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\Logic.dll
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\Logic.pdb
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\Amazon.Lambda.Core.dll
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\Data.dll
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\System.Console.dll
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\EntityFramework.dll
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\EntityFramework.SqlServer.dll
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\Data.pdb
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\Data.dll.config
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\Amazon.Lambda.Core.pdb
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\Amazon.Lambda.Core.xml
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\EntityFramework.xml
+D:\NFK-Cybercom\Solkraft-NFK\Logic\bin\Debug\EntityFramework.SqlServer.xml
+D:\NFK-Cybercom\Solkraft-NFK\Logic\obj\Debug\Logic.csprojResolveAssemblyReference.cache
+D:\NFK-Cybercom\Solkraft-NFK\Logic\obj\Debug\Logic.csproj.CoreCompileInputs.cache
+D:\NFK-Cybercom\Solkraft-NFK\Logic\obj\Debug\Logic.csproj.CopyComplete
+D:\NFK-Cybercom\Solkraft-NFK\Logic\obj\Debug\Logic.dll
+D:\NFK-Cybercom\Solkraft-NFK\Logic\obj\Debug\Logic.pdb

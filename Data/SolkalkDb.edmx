@@ -5,56 +5,95 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SolkalkDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ProducedPower">
+        <EntityType Name="ProducedCompanyPower">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Företag" Type="nchar" MaxLength="15" Nullable="false" />
           <Property Name="Energi" Type="float" Nullable="false" />
-          <Property Name="Kommun" Type="nchar" MaxLength="20" Nullable="false" />
-          <Property Name="Year" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Year" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Month" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Day" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Hour" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProducedMunicipalPower">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kommun" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="Energi" Type="float" Nullable="false" />
+          <Property Name="Year" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Month" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Day" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Hour" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityContainer Name="SolkalkDbModelStoreContainer">
-          <EntitySet Name="ProducedPower" EntityType="Self.ProducedPower" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProducedCompanyPower" EntityType="Self.ProducedCompanyPower" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProducedMunicipalPower" EntityType="Self.ProducedMunicipalPower" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SolkalkDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ProducedPower">
+        <EntityContainer Name="SolkalkDbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProducedCompanyPowers" EntityType="SolkalkDbModel.ProducedCompanyPower" />
+          <EntitySet Name="ProducedMunicipalPowers" EntityType="SolkalkDbModel.ProducedMunicipalPower" />
+        </EntityContainer>
+        <EntityType Name="ProducedCompanyPower">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Företag" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
           <Property Name="Energi" Type="Double" Nullable="false" />
-          <Property Name="Kommun" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Year" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Year" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Month" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Day" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Hour" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="SolkalkDbEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ProducedPowers" EntityType="Self.ProducedPower" />
-        </EntityContainer>
+        <EntityType Name="ProducedMunicipalPower">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kommun" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Energi" Type="Double" Nullable="false" />
+          <Property Name="Year" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Month" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Day" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Hour" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SolkalkDbModelStoreContainer" CdmEntityContainer="SolkalkDbEntities1">
-          <EntitySetMapping Name="ProducedPowers">
-            <EntityTypeMapping TypeName="SolkalkDbModel.ProducedPower">
-              <MappingFragment StoreEntitySet="ProducedPower">
+          <EntitySetMapping Name="ProducedCompanyPowers">
+            <EntityTypeMapping TypeName="SolkalkDbModel.ProducedCompanyPower">
+              <MappingFragment StoreEntitySet="ProducedCompanyPower">
+                <ScalarProperty Name="Hour" ColumnName="Hour" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Energi" ColumnName="Energi" />
+                <ScalarProperty Name="Företag" ColumnName="Företag" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProducedMunicipalPowers">
+            <EntityTypeMapping TypeName="SolkalkDbModel.ProducedMunicipalPower">
+              <MappingFragment StoreEntitySet="ProducedMunicipalPower">
                 <ScalarProperty Name="Hour" ColumnName="Hour" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
                 <ScalarProperty Name="Month" ColumnName="Month" />
                 <ScalarProperty Name="Year" ColumnName="Year" />
                 <ScalarProperty Name="Energi" ColumnName="Energi" />
                 <ScalarProperty Name="Kommun" ColumnName="Kommun" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

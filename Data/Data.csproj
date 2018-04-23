@@ -124,8 +124,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccesser.cs" />
-    <Compile Include="ProducedPower.cs">
+    <Compile Include="CompanyDataAccesser.cs" />
+    <Compile Include="MunicipalDataAccesser.cs" />
+    <Compile Include="ProducedCompanyPower.cs">
+      <DependentUpon>SolkalkDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProducedMunicipalPower.cs">
       <DependentUpon>SolkalkDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

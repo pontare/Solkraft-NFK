@@ -1,141 +1,48 @@
 ﻿@using Data
-@using Logic
+@using System.Resources
+@using System.Globalization
+@using System.Drawing;
+@using System.Collections
+@using Resources;
 
 @model List<ProducedPower>
 
-@{
-    double totalenergi = 0;
-    List<string> Kommuner = new List<string>() { "Aneby", "Tranås", "Nässjö", "Eksjö", "Vetlanda", "Sävsjö", "Värnamo", "Gislaved", "Vaggeryd", "Jönköping", "Habo", "Mullsjö", "Hela Länet" };
-}
-<div class="row">
-    <div class=" col-sm-5">
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style=" background-color:rgb(0, 153, 51)">
-                Välj Kommun
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                @foreach (var elem in Kommuner)
-            {
-                if (elem == "Hela Länet")
-                {
-                    <li> <a href="/Data/ChooseMunicipality/"> @elem </a>  </li>
-            }
-            else
-            {
-                <li> <a href="/Data/ChooseMunicipality/@elem"> @elem </a>  </li>
+@helper DisplayActive()
+    {
+        if ((string)Session["ChosenACtion"] == "ShowTotalPower")
+        {
+            <li class="active"><a href="/Data/ShowTotalPower"> Visa totalt </a></li>
         }
-    }
-
-            </ul>
-        </div>
-
-        @if ((string)Session["kommun"] == null)
-    {
-    <img src="~/Images/alla_kommuner.jpg" class="img-rounded" alt="Cinque Terre" width = "304" height = "236"/>
-}
-        @if ((string)Session["kommun"] == "Aneby")
-    {
-        <img src="~/Images/aneby.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236"/>
-}
-        @if ((string)Session["kommun"] == "Tranås")
-    {
-        <img src="file:///D:/NFK_NFK/bilder_kommuner/tranås.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-}
-        @if ((string)Session["kommun"] == "Nässjö")
-    {
-        <img src="file:///D:/NFK_NFK/bilder_kommuner/nässjö.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-}
-        @if ((string)Session["kommun"] == "Eksjö")
-    {
-        <img src="file:///D:/NFK_NFK/bilder_kommuner/eksjö.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-}
-        @if ((string)Session["kommun"] == "Vetlanda")
-    {
-        <img src="file:///D:/NFK_NFK/bilder_kommuner/vetlanda.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-}
-        @if ((string)Session["kommun"] == "Sävsjö")
-    {
-        <img src="file:///D:/NFK_NFK/bilder_kommuner/sävsjö.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-}
-        @if ((string)Session["kommun"] == "Värnamo")
-    {
-        <img src="file:///D:/NFK_NFK/bilder_kommuner/värnamo.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-}
-        @if ((string)Session["kommun"] == "Gislaved")
-    {
-        <img src="file:///D:/NFK_NFK/bilder_kommuner/gislaved.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-}
-        @if ((string)Session["kommun"] == "Gnosjö")
-    {
-        <img src="file:///D:/NFK_NFK/bilder_kommuner/gnosjö.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-}
-        @if ((string)Session["kommun"] == "Vaggeryd")
-    {
-        <img src="file:///D:/NFK_NFK/bilder_kommuner/vaggeryd.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-}
-        @if ((string)Session["kommun"] == "Jönköping")
-    {
-        <img src="file:///D:/NFK_NFK/bilder_kommuner/jönköping.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-}
-        @if ((string)Session["kommun"] == "Habo")
-    {
-        <img src="file:///D:/NFK_NFK/bilder_kommuner/habo.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-}
-        @if ((string)Session["kommun"] == "Mullsjö")
-    {
-        <img src="file:///D:/NFK_NFK/bilder_kommuner/mullsjö.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        else if ((string)Session["ChosenACtion"] != "ShowTotalPower")
+        {
+            <li><a href="/Data/ShowTotalPower"> Visa totalt </a></li>
+        }
+        if ((string)Session["ChosenACtion"] == "ShowPowerOfPastWeek")
+        {
+            <li class="active"><a href="/Data/ShowPowerOfPastWeek"> Visa senaste veckan </a></li>
+        }
+        else if ((string)Session["ChosenACtion"] != "ShowPowerOfPastWeek")
+        {
+            <li><a href="/Data/ShowPowerOfPastWeek"> Visa senaste veckan </a></li>
+        }
+        if ((string)Session["ChosenACtion"] == "ShowPowerOfDay")
+        {
+            <li class="active"><a href="/Data/ShowPowerOfDay"> Visa senaste dagen </a></li>
+        }
+        else if ((string)Session["ChosenACtion"] != "ShowPowerOfDay")
+        {
+            <li><a href="/Data/ShowPowerOfDay"> Visa senaste dagen </a></li>
+        }
 }
 
-    </div>
-    <div class=" col-sm-7">
-        <ul class="nav nav-tabs">
-            @if ((string)Session["ChosenACtion"] == "ShowTotalPower")
-            {
-                <li class="active"><a href="/Data/ShowTotalPower"> Visa totalt </a></li>
-            }
-            else if ((string)Session["ChosenACtion"] != "ShowTotalPower")
-            {
-                <li><a href="/Data/ShowTotalPower"> Visa totalt </a></li>
-            }
-            @if ((string)Session["ChosenACtion"] == "ShowPowerOfPastWeek")
-            {
-                <li class="active"><a href="/Data/ShowPowerOfPastWeek"> Visa senaste veckan </a></li>
-            }
-            else if ((string)Session["ChosenACtion"] != "ShowPowerOfPastWeek")
-            {
-                <li><a href="/Data/ShowPowerOfPastWeek"> Visa senaste veckan </a></li>
-            }
-            @if ((string)Session["ChosenACtion"] == "ShowPowerOfDay")
-            {
-                <li class="active"><a href="/Data/ShowPowerOfDay"> Visa senaste dagen </a></li>
-            }
-            else if ((string)Session["ChosenACtion"] != "ShowPowerOfDay")
-            {
-                <li><a href="/Data/ShowPowerOfDay"> Visa senaste dagen </a></li>
-            }
-            @if ((string)Session["ChosenACtion"] == "Recalculate")
-            {
-                <li class="active"><a href="/Data/Recalculate"> Recalculate </a></li>
-            }
-            else if ((string)Session["ChosenACtion"] != "Recalculate")
-            {
-                <li><a href="/Data/Recalculate"> Recalculate </a></li>
-            }
-        </ul>
-        @foreach (var elem in Model)
+@helper DisplayEnergy()
+    {
+        double totalenergi = 0;
+        foreach (var elem in Model)
         {
             totalenergi += elem.Energi;
         }
-        @if (Session["kommun"] == null)
-        {
-            <h3>Jönköpings Län</h3>
-        }
-        else
-        {
-            <h3>@((string)Session["kommun"])</h3>
-        }
-        @if ((string)Session["chosenACtion"] == "ShowTotalPower")
+        if ((string)Session["chosenACtion"] == "ShowTotalPower")
         {
             <h2>Energi genererad totalt:</h2>
         }
@@ -151,22 +58,84 @@
         {
             <h2>Total energi:</h2>
         }
-        @if (totalenergi > 1000000000)
+        if (totalenergi > 1000000000)
         {
-        <h2> @Math.Round(totalenergi / 1000000000,2) GWh </h2>
+            <h2> @Math.Round(totalenergi / 1000000000, 2) GWh </h2>
         }
         else if (totalenergi > 1000000)
         {
-        <h2> @Math.Round(totalenergi / 1000000,2) MWh </h2>
+            <h2> @Math.Round(totalenergi / 1000000, 2) MWh </h2>
         }
         else if (totalenergi > 1000)
         {
-        <h2> @Math.Round(totalenergi / 1000,1) kWh </h2>
+            <h2> @Math.Round(totalenergi / 1000, 1) kWh </h2>
         }
         else if (totalenergi > 1000)
         {
-        < h2 > @Math.Round(totalenergi) Wh </ h2 >
+            < h2 > @Math.Round(totalenergi) Wh </ h2 >
         }
+}
+
+@helper DisplayMap()
+    {
+        ResourceSet resourceSet = Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
+        foreach (DictionaryEntry elem in resourceSet)
+        {
+            var kommun = Session["kommun"];
+            if ((string)elem.Key == (string)Session["kommun"] || (Session["kommun"] == null && (string)elem.Key == "alla_kommuner"))
+            {
+                ImageConverter converter = new ImageConverter();
+                byte[] imagebytes = (byte[])converter.ConvertTo(elem.Value, typeof(byte[]));
+                <img src="@String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(imagebytes))" class="img-responsive img-rounded" />
+            }
+        }
+
+}
+
+@helper GenerateDropdownContents()
+{
+    List<string> Kommuner = new List<string>() { "Aneby", "Tranås", "Nässjö", "Eksjö", "Vetlanda", "Sävsjö", "Värnamo", "Gislaved", "Vaggeryd", "Jönköping", "Habo", "Mullsjö", "Hela Länet" };
+    foreach (var elem in Kommuner)
+    {
+        if (elem == "Hela Länet")
+        {
+            <li> <a href="/Data/ChooseMunicipality/"> @elem </a>  </li>
+        }
+        else
+        {
+            <li> <a href="/Data/ChooseMunicipality/@elem"> @elem </a>  </li>
+        }
+    }
+}
+
+<!--------HTML CODE BEGINS HERE---------->
+
+<div class="row container">
+    <div class=" col-sm-5">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style=" background-color:rgb(0, 153, 51)">
+                Välj Kommun
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                @GenerateDropdownContents()
+            </ul>
+        </div>
+        @DisplayMap()
+    </div>
+    <div class=" col-sm-7">
+        <ul class="nav nav-tabs">
+            @DisplayActive()
+        </ul>
+        @if (Session["kommun"] == null)
+        {
+            <h3>Jönköpings Län</h3>
+        }
+        else
+        {
+            <h3>@((string)Session["kommun"])</h3>
+        }
+        @DisplayEnergy()
         <br />
         <button data-toggle="collapse" data-target="#info">Hur det fungerar</button>
         <div id="info" class="collapse">

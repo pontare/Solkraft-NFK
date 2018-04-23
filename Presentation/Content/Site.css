@@ -4,21 +4,15 @@
 }
 
 div.PowerDiv {
-    font-family: "Lato", sans-serif !important;
     border-radius: 10px;
     border-top: none;
     border-bottom: solid;
-}
-
-.box{
-    background-color: yellow;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    font-family: "Lato", sans-serif !important;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */

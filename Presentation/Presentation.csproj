@@ -114,20 +114,20 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Images\alla_kommuner.jpg" />
-    <Content Include="Images\aneby.jpg" />
-    <Content Include="Images\eksjö.jpg" />
-    <Content Include="Images\gislaved.jpg" />
-    <Content Include="Images\gnosjö.jpg" />
-    <Content Include="Images\habo.jpg" />
-    <Content Include="Images\jönköping.jpg" />
-    <Content Include="Images\mullsjö.jpg" />
-    <Content Include="Images\nässjö.jpg" />
-    <Content Include="Images\sävsjö.jpg" />
-    <Content Include="Images\tranås.jpg" />
-    <Content Include="Images\vaggeryd.jpg" />
-    <Content Include="Images\vetlanda.jpg" />
-    <Content Include="Images\värnamo.jpg" />
+    <None Include="Resources\alla_kommuner.jpg" />
+    <None Include="Resources\Aneby.jpg" />
+    <None Include="Resources\Eksjö.jpg" />
+    <None Include="Resources\Gislaved.jpg" />
+    <None Include="Resources\Gnosjö.jpg" />
+    <None Include="Resources\Habo.jpg" />
+    <None Include="Resources\Jönköping.jpg" />
+    <None Include="Resources\Mullsjö.jpg" />
+    <None Include="Resources\Nässjö.jpg" />
+    <None Include="Resources\Sävsjö.jpg" />
+    <None Include="Resources\Tranås.jpg" />
+    <None Include="Resources\Vaggeryd.jpg" />
+    <None Include="Resources\Vetlanda.jpg" />
+    <None Include="Resources\Värnamo.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -137,6 +137,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_LocalResources\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Global.asax.cs">
@@ -174,6 +179,14 @@
       <Project>{8e31a9ea-c26f-422c-a03e-2f13a7334417}</Project>
       <Name>Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_LocalResources\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

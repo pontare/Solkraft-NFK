@@ -21,7 +21,7 @@ namespace Presentation.Controllers
         {
             Session["chosenACtion"] = "ShowPowerOfDay";
             var date = String.Format("{0} {1} {2} {3}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.AddDays(-1).Day, DateTime.Today.Hour);
-            return View("PowerView", DataHandler.GetProducedPowerOfDay(date, (string)Session["kommun"]));
+            return View("PowerView",DataHandler.GetProducedPowerOfDay(date, (string)Session["kommun"]));
         }
         public  ActionResult ShowTotalPower()
         {

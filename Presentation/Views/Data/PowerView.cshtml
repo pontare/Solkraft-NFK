@@ -108,6 +108,11 @@
     }
 }
 
+@helper DisplayComparison()
+{
+    
+}
+
 <!--------HTML CODE BEGINS HERE---------->
 
 <div class="row container">
@@ -127,15 +132,22 @@
         <ul class="nav nav-tabs">
             @DisplayActive()
         </ul>
-        @if (Session["kommun"] == null)
+        @if ((bool?)Session["compare"] == true)
         {
-            <h3>Jönköpings Län</h3>
+            @DisplayComparison();
         }
         else
         {
-            <h3>@((string)Session["kommun"])</h3>
+            @if (Session["kommun"] == null)
+            {
+                <h3>Jönköpings Län</h3>
+            }
+            else
+            {
+                <h3>@((string)Session["kommun"])</h3>
+            }
+            @DisplayEnergy()
         }
-        @DisplayEnergy()
         <br />
         <button data-toggle="collapse" data-target="#info">Hur det fungerar</button>
         <div id="info" class="collapse">

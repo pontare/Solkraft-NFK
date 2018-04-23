@@ -38,5 +38,15 @@ namespace Presentation.Controllers
             DataHandler.CalculateProducedPower();
             return RedirectToAction((string)Session["chosenAction"]);
         }
+        public ActionResult SetCompareMode (bool? id) 
+        {
+            if(id == null)
+            {
+                Session["compare"] = false;
+            }
+            else 
+                Session["compare"] = true;
+            return RedirectToAction((string)Session["chosesnAction"]);
+        }
     }
 }

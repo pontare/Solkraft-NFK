@@ -1,16 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="SolkalkDbModelStoreContainer" CdmEntityContainer="SolkalkDbEntities1">
-    <EntitySetMapping Name="ProducedPowers">
-      <EntityTypeMapping TypeName="SolkalkDbModel.ProducedPower">
-        <MappingFragment StoreEntitySet="ProducedPower">
+    <EntitySetMapping Name="ProducedCompanyPowers">
+      <EntityTypeMapping TypeName="SolkalkDbModel.ProducedCompanyPower">
+        <MappingFragment StoreEntitySet="ProducedCompanyPower">
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Energi" ColumnName="Energi" />
+          <ScalarProperty Name="Företag" ColumnName="Företag" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProducedMunicipalPowers">
+      <EntityTypeMapping TypeName="SolkalkDbModel.ProducedMunicipalPower">
+        <MappingFragment StoreEntitySet="ProducedMunicipalPower">
           <ScalarProperty Name="Hour" ColumnName="Hour" />
           <ScalarProperty Name="Day" ColumnName="Day" />
           <ScalarProperty Name="Month" ColumnName="Month" />
           <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="Energi" ColumnName="Energi" />
           <ScalarProperty Name="Kommun" ColumnName="Kommun" />
-          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

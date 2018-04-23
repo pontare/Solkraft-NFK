@@ -16,7 +16,7 @@ namespace Presentation
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Data", action = "ShowPowerOfDay", id = UrlParameter.Optional }
+                defaults: new { controller = "Municipality", action = "ShowPowerOfDay", id = UrlParameter.Optional }
             );
         }
     }

@@ -12,11 +12,11 @@ namespace Data
     using System;
     using System.Collections.Generic;
     
-    public partial class ProducedPower
+    public partial class ProducedCompanyPower
     {
+        public int Id { get; set; }
+        public string Företag { get; set; }
         public double Energi { get; set; }
-        public string Kommun { get; set; }
-        public int id { get; set; }
         public string Year { get; set; }
         public string Month { get; set; }
         public string Day { get; set; }

@@ -18,8 +18,15 @@ namespace Logic
         }
         static public List<ProducedMunicipalPower> GetProducedPowerOfDay(string date, string kommun = null)
         {
-
             return MunicipalDataAccesser.GetProducedPowerOfDay(ConvertDate(date), kommun);
+        }
+        static public List<ProducedMunicipalPower> GetProducedPowerOfMonth(string date, string kommun = null)
+        {
+            return MunicipalDataAccesser.GetProducedPowerOfMonth(ConvertDate(date),kommun);
+        }
+        static public List<ProducedMunicipalPower> GetProducedPowerOfYear(string date, string kommun = null)
+        {
+            return MunicipalDataAccesser.GetProducedPowerOfYear(ConvertDate(date), kommun);
         }
         static private Date ConvertDate(string date)
         {

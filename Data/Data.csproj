@@ -110,7 +110,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="installerad effekt data.txt" />
     <Content Include="SolkalkDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SolkalkDb.edmx</DependentUpon>

@@ -63,5 +63,45 @@ namespace Data
                 }
             }
         }
+        static public List<ProducedMunicipalPower> GetProducedPowerOfMonth(Date date, string kommun)
+        {
+            using (var db = new SolkalkDbEntities1())
+            {
+                if (kommun != "" && kommun != null)
+                {
+                    var query = from power in db.ProducedMunicipalPowers
+                                where power.Kommun == kommun && power.Month == date.month
+                                select power;
+                    return query.ToList();
+                }
+                else
+                {
+                    var query = from power in db.ProducedMunicipalPowers
+                                where power.Month == date.month
+                                select power;
+                    return query.ToList();
+                }
+            }
+        }
+        static public List<ProducedMunicipalPower> GetProducedPowerOfYear(Date date, string kommun)
+        {
+            using (var db = new SolkalkDbEntities1())
+            {
+                if (kommun != "" && kommun != null)
+                {
+                    var query = from power in db.ProducedMunicipalPowers
+                                where power.Kommun == kommun && power.Year == date.year
+                                select power;
+                    return query.ToList();
+                }
+                else
+                {
+                    var query = from power in db.ProducedMunicipalPowers
+                                where power.Year == date.year
+                                select power;
+                    return query.ToList();
+                }
+            }
+        }
     }
 }

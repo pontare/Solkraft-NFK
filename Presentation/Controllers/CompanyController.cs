@@ -13,24 +13,24 @@ namespace Presentation.Controllers
         {
             Session["chosenACtion"] = "ShowPowerOfDay";
             var date = String.Format("{0} {1} {2} {3}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.AddDays(-1).Day, DateTime.Today.Hour);
-            return View("PowerView", CompanyDataHandler.GetProducedPowerOfDay(date, (string)Session["kommun"]));
+            return View("PowerView", CompanyDataHandler.GetProducedPowerOfDay(date, (string)Session["företag"]));
         }
         public ActionResult ShowPowerOfMonth()
         {
             Session["chosenAction"] = "ShowPowerOfMonth";
             var date = String.Format("{0} {1} {2} {3}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.AddDays(-1).Day, DateTime.Today.Hour);
-            return View("PowerView", CompanyDataHandler.GetProducedPowerOfMonth(date, (string)Session["kommun"]));
+            return View("PowerView", CompanyDataHandler.GetProducedPowerOfMonth(date, (string)Session["företag"]));
         }
         public ActionResult ShowPowerOfYear()
         {
             Session["chosenAction"] = "ShowPowerOfYear";
             var date = String.Format("{0} {1} {2} {3}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.AddDays(-1).Day, DateTime.Today.Hour);
-            return View("PowerView", CompanyDataHandler.GetProducedPowerOfYear(date, (string)Session["kommun"]));
+            return View("PowerView", CompanyDataHandler.GetProducedPowerOfYear(date, (string)Session["företag"]));
         }
         public ActionResult ShowTotalPower()
         {
             Session["chosenACtion"] = "ShowTotalPower";
-            return View("PowerView", CompanyDataHandler.GetTotalProducedPower((string)Session["kommun"]));
+            return View("PowerView", CompanyDataHandler.GetTotalProducedPower((string)Session["företag"]));
         }
         public ActionResult ChooseCompany(string id)
         {

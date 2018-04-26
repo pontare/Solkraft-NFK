@@ -9,22 +9,22 @@ namespace Logic
 {
     public static class CompanyDataHandler
     {
-        static public List<ProducedCompanyPower> GetTotalProducedPower(string kommun = null)
+        static public List<ProducedCompanyPower> GetTotalProducedPower(string företag = null)
         {
-            return CompanyDataAccesser.GetTotalProducedPower(kommun);
+            return CompanyDataAccesser.GetTotalProducedPower(företag);
         }
-        static public List<ProducedCompanyPower> GetProducedPowerOfDay(string date, string kommun = null)
+        static public List<ProducedCompanyPower> GetProducedPowerOfDay(string date, string företag = null)
         {
 
-            return CompanyDataAccesser.GetProducedPowerOfDay(ConvertDate(date), kommun);
+            return CompanyDataAccesser.GetProducedPowerOfDay(ConvertDate(date), företag);
         }
-        static public List<ProducedCompanyPower> GetProducedPowerOfMonth(string date, string kommun = null)
+        static public List<ProducedCompanyPower> GetProducedPowerOfMonth(string date, string företag = null)
         {
-            return CompanyDataAccesser.GetProducedPowerOfMonth(ConvertDate(date), kommun);
+            return CompanyDataAccesser.GetProducedPowerOfMonth(ConvertDate(date), företag);
         }
-        static public List<ProducedCompanyPower> GetProducedPowerOfYear(string date, string kommun = null)
+        static public List<ProducedCompanyPower> GetProducedPowerOfYear(string date, string företag = null)
         {
-            return CompanyDataAccesser.GetProducedPowerOfYear(ConvertDate(date), kommun);
+            return CompanyDataAccesser.GetProducedPowerOfYear(ConvertDate(date), företag);
         }
         static private Date ConvertDate(string date)
         {

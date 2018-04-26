@@ -1,0 +1,166 @@
+﻿@using Data
+@using System.Resources
+@using System.Globalization
+@using System.Drawing;
+@using System.Collections
+@using Resources;
+
+@model List<ProducedCompanyPower>
+
+@helper DisplayActive()
+{
+    if ((string)Session["chosenAction"] == "ShowTotalPower")
+    {
+        <li class="active"><a href="/Company/ShowTotalPower"> Visa totalt </a></li>
+    }
+    else if ((string)Session["chosenAction"] != "ShowTotalPower")
+    {
+        <li><a href="/Company/ShowTotalPower"> Visa totalt </a></li>
+    }
+    if ((string)Session["chosenAction"] == "ShowPowerOfYear")
+    {
+        <li class="active"><a href="/Company/ShowPowerOfYear"> Visa året </a></li>
+    }
+    else if ((string)Session["chosenAction"] != "ShowPowerOfYear")
+    {
+        <li><a href="/Company/ShowPowerOfYear"> Visa året </a></li>
+    }
+    if ((string)Session["chosenAction"] == "ShowPowerOfMonth")
+    {
+        <li class="active"><a href="/Company/ShowPowerOfMonth"> Visa månaden </a></li>
+    }
+    else if ((string)Session["chosenAction"] != "ShowPowerOfMonth")
+    {
+        <li><a href="/Company/ShowPowerOfMonth"> Visa månaden </a></li>
+    }
+    if ((string)Session["chosenAction"] == "ShowPowerOfDay")
+    {
+        <li class="active"><a href="/Company/ShowPowerOfDay"> Visa igår </a></li>
+    }
+    else if ((string)Session["chosenAction"] != "ShowPowerOfDay")
+    {
+        <li><a href="/Company/ShowPowerOfDay"> Visa igår </a></li>
+    }
+}
+
+@helper DisplayEnergy()
+{
+    double totalenergi = 0;
+    foreach (var elem in Model)
+    {
+        totalenergi += elem.Energi;
+    }
+    if ((string)Session["chosenACtion"] == "ShowTotalPower")
+    {
+        <h2>Energi genererad totalt:</h2>
+    }
+    else if ((string)Session["chosenACtion"] == "ShowPowerOfYear")
+    {
+        <h2>Energi genererad senaste året:</h2>
+    }
+    else if ((string)Session["chosenACtion"] == "ShowPowerOfMonth")
+    {
+        <h2>Energi genererad senaste månaden:</h2>
+    }
+    else if ((string)Session["chosenACtion"] == "ShowPowerOfDay")
+    {
+        <h2>Energi genererad senaste dagen:</h2>
+    }
+    if (totalenergi > 1000000000)
+    {
+        <h2> @Math.Round(totalenergi / 1000000000, 2) GWh </h2>
+    }
+    else if (totalenergi > 1000000)
+    {
+        <h2> @Math.Round(totalenergi / 1000000, 2) MWh </h2>
+    }
+    else if (totalenergi > 1000)
+    {
+        <h2> @Math.Round(totalenergi / 1000, 1) kWh </h2>
+    }
+    else if (totalenergi > 1000)
+    {
+        <h2> @Math.Round(totalenergi) Wh </h2>
+    }
+}
+
+@helper DisplayLogo()
+{
+    ResourceSet resourceSet = Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
+    foreach (DictionaryEntry elem in resourceSet)
+    {
+        var kommun = Session["företag"];
+        if ((string)elem.Key == (string)Session["företag"])
+        {
+            ImageConverter converter = new ImageConverter();
+            byte[] imagebytes = (byte[])converter.ConvertTo(elem.Value, typeof(byte[]));
+            <div style="padding: 10px">
+                <img src="@String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(imagebytes))" class="img-responsive img-rounded" width="300" height="300" />
+            </div>
+        }
+    }
+}
+
+@helper GenerateDropdownContents()
+{
+    List<string> företag = new List<string>() { "Husqvarna" };
+    foreach (var elem in företag)
+    {
+        if (elem == "Hela Länet")
+        {
+            <li> <a href="/Company/ChooseMunicipality/"> @elem </a>  </li>
+        }
+        else
+        {
+            <li> <a href="/Company/ChooseCompany/@elem"> @elem </a>  </li>
+        }
+    }
+}
+
+@helper DisplayComparison()
+{
+
+}
+
+<!--------HTML CODE BEGINS HERE---------->
+
+<div class="row container">
+    <div class=" col-sm-5" style="padding: 15px">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style=" background-color:rgb(0, 153, 51)">
+                Välj Företag
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                @GenerateDropdownContents()
+            </ul>
+        </div>
+        @DisplayLogo()
+    </div>
+    <div class="col-sm-5" style="padding:20px">
+        <ul class="nav nav-tabs">
+            @DisplayActive()
+        </ul>
+        @if ((bool?)Session["compare"] == true)
+        {
+            @DisplayComparison();
+        }
+        else
+        {
+            if (Session["företag"] == null)
+            {
+                <h3>Alla företag</h3>
+            }
+            else
+            {
+                <h3>@((string)Session["företag"])</h3>
+            }
+            @DisplayEnergy()
+        }
+        <br />
+        <button data-toggle="collapse" data-target="#info">Hur det fungerar</button>
+        <div id="info" class="collapse">
+            Effekten är estemerad genom att...
+        </div>
+    </div>
+</div>

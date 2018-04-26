@@ -7,16 +7,24 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    class CompanyDataHandler
+    public static class CompanyDataHandler
     {
-        static public List<ProducedMunicipalPower> GetTotalProducedPower(string kommun = null)
+        static public List<ProducedCompanyPower> GetTotalProducedPower(string kommun = null)
         {
-            return MunicipalDataAccesser.GetTotalProducedPower(kommun);
+            return CompanyDataAccesser.GetTotalProducedPower(kommun);
         }
-        static public List<ProducedMunicipalPower> GetProducedPowerOfDay(string date, string kommun = null)
+        static public List<ProducedCompanyPower> GetProducedPowerOfDay(string date, string kommun = null)
         {
 
-            return MunicipalDataAccesser.GetProducedPowerOfDay(ConvertDate(date), kommun);
+            return CompanyDataAccesser.GetProducedPowerOfDay(ConvertDate(date), kommun);
+        }
+        static public List<ProducedCompanyPower> GetProducedPowerOfMonth(string date, string kommun = null)
+        {
+            return CompanyDataAccesser.GetProducedPowerOfMonth(ConvertDate(date), kommun);
+        }
+        static public List<ProducedCompanyPower> GetProducedPowerOfYear(string date, string kommun = null)
+        {
+            return CompanyDataAccesser.GetProducedPowerOfYear(ConvertDate(date), kommun);
         }
         static private Date ConvertDate(string date)
         {

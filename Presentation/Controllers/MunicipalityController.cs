@@ -13,25 +13,25 @@ namespace Presentation.Controllers
     {
         public ActionResult ShowPowerOfDay()
         {
-            Session["chosenACtion"] = "ShowPowerOfDay";
+            Session["chosenAction"] = "ShowPowerOfDay";
             var date = String.Format("{0} {1} {2} {3}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.AddDays(-1).Day, DateTime.Today.Hour);
             return View("PowerView",MunicipalDataHandler.GetProducedPowerOfDay(date, (string)Session["kommun"]));
         }
         public ActionResult ShowPowerOfMonth()
         {
-            Session["chosenACtion"] = "ShowPowerOfMonth";
+            Session["chosenAction"] = "ShowPowerOfMonth";
             var date = String.Format("{0} {1} {2} {3}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.AddDays(-1).Day, DateTime.Today.Hour);
             return View("PowerView", MunicipalDataHandler.GetProducedPowerOfMonth(date, (string)Session["kommun"]));
         }
         public ActionResult ShowPowerOfYear()
         {
-            Session["chosenACtion"] = "ShowPowerOfYear";
+            Session["chosenAction"] = "ShowPowerOfYear";
             var date = String.Format("{0} {1} {2} {3}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.AddDays(-1).Day, DateTime.Today.Hour);
             return View("PowerView", MunicipalDataHandler.GetProducedPowerOfYear(date, (string)Session["kommun"]));
         }
         public  ActionResult ShowTotalPower()
         {
-            Session["chosenACtion"] = "ShowTotalPower";
+            Session["chosenAction"] = "ShowTotalPower";
             return View("PowerView", MunicipalDataHandler.GetTotalProducedPower((string)Session["kommun"]));
         }
         public ActionResult ChooseMunicipality(string id)

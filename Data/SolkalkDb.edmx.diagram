@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="31ac5d252f104955a1387822b409d694" Name="Diagram1">
-        <EntityTypeShape EntityType="SolkalkDbModel.ProducedCompanyPower" Width="1.5" PointX="5.875" PointY="2.375" />
-        <EntityTypeShape EntityType="SolkalkDbModel.ProducedMunicipalPower" Width="1.5" PointX="3.75" PointY="2.375" />
+      <Diagram DiagramId="3fca486e05664b189657befd591fbbaa" Name="Diagram1">
+        <EntityTypeShape EntityType="SolkalkDbModel.ProducedCompanyPower" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolkalkDbModel.ProducedMunicipalPower" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

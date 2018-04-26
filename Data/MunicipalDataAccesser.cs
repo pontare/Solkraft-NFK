@@ -26,7 +26,7 @@ namespace Data
 
         static public List<ProducedMunicipalPower> GetTotalProducedPower(string kommun = null)
         {
-            using (var db = new SolkalkDbEntities1())
+            using (var db = new SolkalkDbEntities())
             {
                 if (kommun != "" && kommun != null)
                 {
@@ -43,9 +43,9 @@ namespace Data
                 }
             }
         }
-        static public List<ProducedMunicipalPower> GetProducedPowerOfDay(Date date, string kommun)
+        static public List<ProducedMunicipalPower> GetProducedPowerOfDay(Date date, string kommun = null)
         {
-            using (var db = new SolkalkDbEntities1())
+            using (var db = new SolkalkDbEntities())
             {
                 if (kommun != "" && kommun != null)
                 {
@@ -63,9 +63,9 @@ namespace Data
                 }
             }
         }
-        static public List<ProducedMunicipalPower> GetProducedPowerOfMonth(Date date, string kommun)
+        static public List<ProducedMunicipalPower> GetProducedPowerOfMonth(Date date, string kommun = null)
         {
-            using (var db = new SolkalkDbEntities1())
+            using (var db = new SolkalkDbEntities())
             {
                 if (kommun != "" && kommun != null)
                 {
@@ -83,9 +83,9 @@ namespace Data
                 }
             }
         }
-        static public List<ProducedMunicipalPower> GetProducedPowerOfYear(Date date, string kommun)
+        static public List<ProducedMunicipalPower> GetProducedPowerOfYear(Date date, string kommun = null)
         {
-            using (var db = new SolkalkDbEntities1())
+            using (var db = new SolkalkDbEntities())
             {
                 if (kommun != "" && kommun != null)
                 {

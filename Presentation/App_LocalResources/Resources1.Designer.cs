@@ -123,6 +123,16 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Husqvarna {
+            get {
+                object obj = ResourceManager.GetObject("Husqvarna", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Jönköping {
             get {
                 object obj = ResourceManager.GetObject("Jönköping", resourceCulture);
@@ -157,6 +167,15 @@ namespace Resources {
             get {
                 object obj = ResourceManager.GetObject("Sävsjö", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://www.kalixmaskiner.se/webshop/skog-och-traedgaard/remmar-husqvarna/husqvarna-577-00-30-01/.
+        /// </summary>
+        public static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
             }
         }
         

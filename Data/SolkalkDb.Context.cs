@@ -13,16 +13,18 @@ namespace Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SolkalkDbEntities1 : DbContext
+    public partial class SolkalkDbEntities : DbContext
     {
-        public SolkalkDbEntities1()
-            : base("name=SolkalkDbEntities1")
+        public SolkalkDbEntities()
+            : base("name=SolkalkDbEntities")
         {
         }
-        static SolkalkDbEntities1()
+
+        static SolkalkDbEntities()
         {
             var foo = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

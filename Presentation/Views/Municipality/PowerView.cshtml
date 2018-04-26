@@ -6,136 +6,276 @@
 @using Resources;
 
 @model List<ProducedMunicipalPower>
-
-@helper DisplayActive()
-{
-    if ((string)Session["chosenAction"] == "ShowTotalPower")
+<!-------------try.get true/false----------->
+@{
+    Dictionary<string, double> kommunPowerDict = new Dictionary<string, double>();
+    List<string> Kommuner = new List<string>() { "Aneby", "Gnosjö", "Tranås", "Nässjö", "Eksjö", "Vetlanda", "Sävsjö", "Värnamo", "Gislaved", "Vaggeryd", "Jönköping", "Habo", "Mullsjö", "Hela Länet" };
+    foreach (var elem in Kommuner)
     {
-        <li class="active"><a href="/Municipality/ShowTotalPower"> Visa totalt </a></li>
+        kommunPowerDict.Add(elem, 0);
     }
-    else if ((string)Session["chosenAction"] != "ShowTotalPower")
-    {
-        <li><a href="/Municipality/ShowTotalPower"> Visa totalt </a></li>
-    }
-    if ((string)Session["chosenAction"] == "ShowPowerOfYear")
-    {
-        <li class="active"><a href="/Municipality/ShowPowerOfYear"> Visa året </a></li>
-    }
-    else if ((string)Session["chosenAction"] != "ShowPowerOfYear")
-    {
-        <li><a href="/Municipality/ShowPowerOfYear"> Visa året </a></li>
-    }
-    if ((string)Session["chosenAction"] == "ShowPowerOfMonth")
-    {
-        <li class="active"><a href="/Municipality/ShowPowerOfMonth"> Visa månaden </a></li>
-    }
-    else if ((string)Session["chosenAction"] != "ShowPowerOfMonth")
-    {
-        <li><a href="/Municipality/ShowPowerOfMonth"> Visa månaden </a></li>
-    }
-    if ((string)Session["chosenAction"] == "ShowPowerOfDay")
-    {
-        <li class="active"><a href="/Municipality/ShowPowerOfDay"> Visa senaste dagen </a></li>
-    }
-    else if ((string)Session["chosenAction"] != "ShowPowerOfDay")
-    {
-        <li><a href="/Municipality/ShowPowerOfDay"> Visa senaste dagen </a></li>
-    }
-}
-
-@helper DisplayEnergy()
-{
-    double totalenergi = 0;
     foreach (var elem in Model)
     {
-        totalenergi += elem.Energi;
+        kommunPowerDict[elem.Kommun] += Math.Round(elem.Energi / 1000);
     }
-    if ((string)Session["chosenACtion"] == "ShowTotalPower")
+
+}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load("current", { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ["Kommun", "Kilowatttimmar", { role: "style" }],
+                ["Aneby",@kommunPowerDict["Aneby"], "3A913F"],
+                ["Gnosjö", @kommunPowerDict["Gnosjö"], "3A913F"],
+                ["Tranås", @kommunPowerDict["Tranås"], "3A913F"],
+                ["Nässjö", @kommunPowerDict["Nässjö"], "3A913F"],
+                ["Eksjö", @kommunPowerDict["Eksjö"], "3A913F"],
+                ["Vetlanda", @kommunPowerDict["Vetlanda"], "3A913F"],
+                ["Sävsjö", @kommunPowerDict["Sävsjö"], "3A913F"],
+                ["Värnamo", @kommunPowerDict["Värnamo"], "3A913F"],
+                ["Gislaved", @kommunPowerDict["Gislaved"], "3A913F"],
+                ["Vaggeryd", @kommunPowerDict["Vaggeryd"], "3A913F"],
+                ["Jönköping", @kommunPowerDict["Jönköping"], "3A913F"],
+                ["Habo", @kommunPowerDict["Habo"], "3A913F"],
+                ["Mullsjö", @kommunPowerDict["Mullsjö"], "3A913F"]
+            ]);
+
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
+            },
+            2]);
+
+        var options = {
+            title: "Producerade Kilowatttimmar senaste månaden",
+            width: 700,
+            height: 250,
+            bar: { groupWidth: "95%" },
+            legend: { position: "none" },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
+    }
+</script>
+
+@helper DisplayActive()
     {
-        <h2>Energi genererad totalt:</h2>
-    }
-    else if ((string)Session["chosenACtion"] == "ShowPowerOfYear")
+        if ((string)Session["chosenACtion"] == "ShowTotalPower")
+        {
+            <li class="active"><a href="/Municipality/ShowTotalPower"> Visa totalt </a></li>
+        }
+        else if ((string)Session["chosenACtion"] != "ShowTotalPower")
+        {
+            <li><a href="/Municipality/ShowTotalPower"> Visa totalt </a></li>
+        }
+        if ((string)Session["chosenACtion"] == "ShowPowerOfMonth")
+        {
+            <li class="active"><a href="/Municipality/ShowPowerOfMonth"> Visa senaste månaden </a></li>
+        }
+        else if ((string)Session["chosenACtion"] != "ShowPowerOfMonth")
+        {
+            <li><a href="/Municipality/ShowPowerOfMonth"> Visa senaste månaden </a></li>
+        }
+        if ((string)Session["chosenACtion"] == "ShowPowerOfDay")
+        {
+            <li class="active"><a href="/Municipality/ShowPowerOfDay"> Visa senaste dagen </a></li>
+        }
+        else if ((string)Session["chosenACtion"] != "ShowPowerOfDay")
+        {
+            <li><a href="/Municipality/ShowPowerOfDay"> Visa senaste dagen </a></li>
+        }
+}
+
+@helper RandomizeEq(double totalenergi, char prefix)
+ {
+ 
+    string omvandling = "";
+    Random rnd = new Random();
+    int rand = rnd.Next(1, 4);
+    double times = 0;
+    if (prefix == 'k')
     {
-        <h2>Energi genererad senaste året:</h2>
+        switch (rand)
+        {
+            case 1:
+                omvandling = " koppar kaffe";
+                times = 40;
+                break;
+            case 2:
+                omvandling = " timmar hårtork";
+                times = 0.5;
+                break;
+            case 3:
+                omvandling = " timmar mikrovågsugn";
+                times = 0.7166;
+                break;
+        }
     }
-    else if ((string)Session["chosenACtion"] == "ShowPowerOfMonth")
+    else if (prefix == 'm')
     {
-        <h2>Energi genererad senaste månaden:</h2>
+        switch (rand)
+        {
+            case 1:
+                omvandling = " timmar med en vattenkokare";
+                times = (0.45);
+                break;
+            case 2:
+                omvandling = " timmar med en dammsugare";
+                times = (0.8333);
+                break;
+            case 3:
+                omvandling = " timmar med en induktionsspis";
+                times = (0.55);
+                break;
+        }
     }
-    else if ((string)Session["chosenACtion"] == "ShowPowerOfDay")
+    else if (prefix == 'g')
     {
-        <h2>Energi genererad senaste dagen:</h2>
+        switch (rand)
+        {
+            case 1:
+                omvandling = " timmar bastubad";
+                times = 0.2;
+                break;
+            case 2:
+                omvandling = " timmar med ett strykjärn";
+                times = 0.4166;
+                break;
+            case 3:
+                omvandling = " kg tvätt i en torktummlare";
+                times = 1.2;
+                break;
+        }
     }
-    if (totalenergi > 1000000000)
+
+    @Math.Round((totalenergi / 1000) * times, 0)@omvandling
+ }
+
+@helper DisplayEnergy()
     {
-        <h2> @Math.Round(totalenergi / 1000000000, 2) GWh </h2>
-    }
-    else if (totalenergi > 1000000)
-    {
-        <h2> @Math.Round(totalenergi / 1000000, 2) MWh </h2>
-    }
-    else if (totalenergi > 1000)
-    {
-        <h2> @Math.Round(totalenergi / 1000, 1) kWh </h2>
-    }
-    else if (totalenergi > 1000)
-    {
-        <h2> @Math.Round(totalenergi) Wh </h2>
-    }
+        double totalenergi = 0;
+        foreach (var elem in Model)
+        {
+            totalenergi += elem.Energi;
+        }
+        if ((string)Session["chosenACtion"] == "ShowTotalPower")
+        {
+            <h2>Energi genererad totalt:</h2>
+        }
+        else if ((string)Session["chosenACtion"] == "ShowPowerOfMonth")
+        {
+            <h2>Energi genererad denna månaden:</h2>
+        }
+        else if ((string)Session["chosenACtion"] == "ShowPowerOfDay")
+        {
+            <h2>Energi genererad senaste dagen:</h2>
+        }
+        else if ((string)Session["chosenACtion"] == "Recalculate")
+        {
+            <h2>Total energi:</h2>
+        }
+        if (totalenergi > 1000000000)
+        {
+            <h2> @Math.Round(totalenergi / 1000000000, 2) GWh</h2>
+            <h4 style="color:gray">Eller @RandomizeEq(totalenergi, 'g')</h4>
+        }
+        else if (totalenergi > 1000000)
+        {
+            <h2> @Math.Round(totalenergi / 1000000, 2) MWh</h2>
+            <h4 style="color:gray">Eller @RandomizeEq(totalenergi, 'm')</h4>
+        }
+        else if (totalenergi > 1000)
+        {
+            <h2> @Math.Round(totalenergi / 1000, 1) kWh</h2>
+            <h4 style="color:gray">Eller @RandomizeEq(totalenergi,'k')</h4>
+        }
+        else if (totalenergi > 1000)
+        {
+            <h2> @Math.Round(totalenergi) Wh </h2>
+        }
 }
 
 @helper DisplayMap()
-{
-    ResourceSet resourceSet = Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
-    foreach (DictionaryEntry elem in resourceSet)
     {
-        var kommun = Session["kommun"];
-        if ((string)elem.Key == (string)Session["kommun"] || (Session["kommun"] == null && (string)elem.Key == "alla_kommuner"))
+        ResourceSet resourceSet = Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
+        foreach (DictionaryEntry elem in resourceSet)
         {
-            ImageConverter converter = new ImageConverter();
-            byte[] imagebytes = (byte[])converter.ConvertTo(elem.Value, typeof(byte[]));
-            <img src="@String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(imagebytes))" class="img-responsive img-rounded" width="300" height="300"/>
+            var kommun = Session["kommun"];
+            if ((string)elem.Key == (string)Session["kommun"] || (Session["kommun"] == null && (string)elem.Key == "alla_kommuner"))
+            {
+                ImageConverter converter = new ImageConverter();
+                byte[] imagebytes = (byte[])converter.ConvertTo(elem.Value, typeof(byte[]));
+                <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(imagebytes))" class="img-responsive img-rounded" width="300" height="300" />
+            }
         }
-    }
 }
 
 @helper GenerateDropdownContents()
-{
-    List<string> Kommuner = new List<string>() { "Aneby", "Tranås", "Nässjö", "Eksjö", "Vetlanda", "Sävsjö", "Värnamo", "Gislaved", "Vaggeryd", "Jönköping", "Habo", "Mullsjö", "Hela Länet" };
-    foreach (var elem in Kommuner)
     {
-        if (elem == "Hela Länet")
+        List<string> Kommuner = new List<string>() { "Aneby", "Gnosjö", "Tranås", "Nässjö", "Eksjö", "Vetlanda", "Sävsjö", "Värnamo", "Gislaved", "Vaggeryd", "Jönköping", "Habo", "Mullsjö", "Hela Länet" };
+        foreach (var elem in Kommuner)
         {
-            <li> <a href="/Municipality/ChooseMunicipality/"> @elem </a>  </li>
+            if (elem == "Hela Länet")
+            {
+                <li> <a href="/Municipality/ChooseMunicipality/"> @elem </a>  </li>
+            }
+            else
+            {
+                <li> <a href="/Municipality/ChooseMunicipality/@elem"> @elem </a>  </li>
+            }
         }
-        else
-        {
-            <li> <a href="/Municipality/ChooseMunicipality/@elem"> @elem </a>  </li>
-        }
-    }
 }
 
 @helper DisplayComparison()
-{
-    
+    {
+        <div id="columnchart_values"></div>
+}
+
+@helper ChartButton()
+    {
+        if ((bool?)Session["compare"] == true)
+        {
+            <a href="/Municipality/SetCompareMode/0" class="btn btn-info" role="button" style=" background-color:rgb(58, 145, 63)">Dölj Diagram</a>
+        }
+        else
+        {
+            <a href="/Municipality/SetCompareMode/1" class="btn btn-info" role="button" style=" background-color:rgb(58, 145, 63)">Visa Diagram</a>
+        }
 }
 
 <!--------HTML CODE BEGINS HERE---------->
 
 <div class="row container">
-    <div class=" col-sm-5" style="padding: 15px">
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style=" background-color:rgb(0, 153, 51)">
-                Välj Kommun
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                @GenerateDropdownContents()
-            </ul>
-        </div>
+    <div class=" col-sm-4" style="padding: 15px">
+        @if ((bool?)Session["compare"] == false || (bool?)Session["compare"] == null)
+        {
+            <div class="dropdown">
+                @ChartButton()
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style=" background-color:rgb(58, 145, 63)">
+                    Välj Kommun
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    @GenerateDropdownContents()
+                </ul>
+            </div>
+        }
+        else
+        {
+            @ChartButton()
+        }
         @DisplayMap()
+
     </div>
-    <div class="col-sm-5" style="padding:20px">
+    <div class="col-sm-5" style="padding:20px" color="#fff">
         <ul class="nav nav-tabs">
             @DisplayActive()
         </ul>
@@ -156,9 +296,5 @@
             @DisplayEnergy()
         }
         <br />
-        <button data-toggle="collapse" data-target="#info">Hur det fungerar</button>
-        <div id="info" class="collapse">
-            Effekten är estemerad genom att...
-        </div>
     </div>
 </div>

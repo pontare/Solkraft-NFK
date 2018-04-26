@@ -118,52 +118,52 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="alla_kommuner" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\alla_kommuner.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Aneby" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\aneby.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Eksjö" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eksjö.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gislaved" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gislaved.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gnosjö" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gnosjö.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Habo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\habo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Jönköping" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\jönköping.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mullsjö" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mullsjö.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Nässjö" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\nässjö.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sävsjö" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sävsjö.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tranås" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tranås.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Vaggeryd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\vaggeryd.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Vetlanda" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\vetlanda.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Värnamo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\värnamo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Husqvarna" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Husqvarna.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="String" xml:space="preserve">
     <value>https://www.kalixmaskiner.se/webshop/skog-och-traedgaard/remmar-husqvarna/husqvarna-577-00-30-01/</value>
+  </data>
+  <data name="alla_kommuner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\alla_kommuner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Aneby" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Aneby.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Eksjö" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eksjö.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gislaved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gislaved.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnosjö" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gnosjö.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Habo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\habo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Jönköping" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jönköping.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mullsjö" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mullsjö.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Nässjö" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nässjö.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sävsjö" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sävsjö.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tranås" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tranås.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Vaggeryd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vaggeryd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Vetlanda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vetlanda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Värnamo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\värnamo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

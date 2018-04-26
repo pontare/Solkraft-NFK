@@ -13,41 +13,50 @@ namespace Presentation.Controllers
     {
         public ActionResult ShowPowerOfDay()
         {
-            Session["chosenAction"] = "ShowPowerOfDay";
+            Session["chosenACtion"] = "ShowPowerOfDay";
             var date = String.Format("{0} {1} {2} {3}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.AddDays(-1).Day, DateTime.Today.Hour);
             return View("PowerView",MunicipalDataHandler.GetProducedPowerOfDay(date, (string)Session["kommun"]));
         }
         public ActionResult ShowPowerOfMonth()
         {
-            Session["chosenAction"] = "ShowPowerOfMonth";
+            Session["chosenACtion"] = "ShowPowerOfMonth";
             var date = String.Format("{0} {1} {2} {3}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.AddDays(-1).Day, DateTime.Today.Hour);
             return View("PowerView", MunicipalDataHandler.GetProducedPowerOfMonth(date, (string)Session["kommun"]));
         }
         public ActionResult ShowPowerOfYear()
         {
-            Session["chosenAction"] = "ShowPowerOfYear";
+            Session["chosenACtion"] = "ShowPowerOfYear";
             var date = String.Format("{0} {1} {2} {3}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.AddDays(-1).Day, DateTime.Today.Hour);
             return View("PowerView", MunicipalDataHandler.GetProducedPowerOfYear(date, (string)Session["kommun"]));
         }
         public  ActionResult ShowTotalPower()
         {
-            Session["chosenAction"] = "ShowTotalPower";
+            Session["chosenACtion"] = "ShowTotalPower";
             return View("PowerView", MunicipalDataHandler.GetTotalProducedPower((string)Session["kommun"]));
         }
         public ActionResult ChooseMunicipality(string id)
         {
-            Session["kommun"] = id;
-            return RedirectToAction((string)Session["chosenAction"]);
+            if ((bool?)Session["compare"] == false || (bool?)Session["compare"] == null)
+            {
+                Session["kommun"] = id;
+                Session["kommunOld"] = id;
+            }
+            return RedirectToAction((string)Session["chosenACtion"]);
         }
-        public ActionResult SetCompareMode (bool? id) 
+        public ActionResult SetCompareMode(int? id)
         {
-            if(id == null)
+            if (id == null || id == 0 || (bool?)Session["compare"] == true)
             {
                 Session["compare"] = false;
+                Session["kommun"] = Session["kommunOld"];
             }
-            else 
+            else
+            {
                 Session["compare"] = true;
-            return RedirectToAction((string)Session["chosesnAction"]);
+                Session["kommun"] = null;
+            }
+            return RedirectToAction((string)Session["chosenACtion"]);
+
         }
     }
 }

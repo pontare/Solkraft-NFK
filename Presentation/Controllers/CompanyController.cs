@@ -17,13 +17,13 @@ namespace Presentation.Controllers
         }
         public ActionResult ShowPowerOfMonth()
         {
-            Session["chosenAction"] = "ShowPowerOfMonth";
+            Session["chosenACtion"] = "ShowPowerOfMonth";
             var date = String.Format("{0} {1} {2} {3}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.AddDays(-1).Day, DateTime.Today.Hour);
             return View("PowerView", CompanyDataHandler.GetProducedPowerOfMonth(date, (string)Session["företag"]));
         }
         public ActionResult ShowPowerOfYear()
         {
-            Session["chosenAction"] = "ShowPowerOfYear";
+            Session["chosenACtion"] = "ShowPowerOfYear";
             var date = String.Format("{0} {1} {2} {3}", DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.AddDays(-1).Day, DateTime.Today.Hour);
             return View("PowerView", CompanyDataHandler.GetProducedPowerOfYear(date, (string)Session["företag"]));
         }
@@ -34,18 +34,27 @@ namespace Presentation.Controllers
         }
         public ActionResult ChooseCompany(string id)
         {
-            Session["företag"] = id;
-            return RedirectToAction((string)Session["chosenAction"]);
+            if ((bool?)Session["compare"] == false || (bool?)Session["compare"] == null)
+            {
+                Session["företag"] = id;
+                Session["företagOld"] = id;
+            }
+            return RedirectToAction((string)Session["chosenACtion"]);
         }
-        public ActionResult SetCompareMode(bool? id)
+        public ActionResult SetCompareMode(int? id)
         {
-            if (id == null)
+            if (id == null || id == 0 || (bool?)Session["compare"] == true)
             {
                 Session["compare"] = false;
+                Session["företag"] = Session["företagOld"];
             }
             else
+            {
                 Session["compare"] = true;
-            return RedirectToAction((string)Session["chosesnAction"]);
+                Session["företag"] = null;
+            }
+            return RedirectToAction((string)Session["chosenACtion"]);
+
         }
     }
 }

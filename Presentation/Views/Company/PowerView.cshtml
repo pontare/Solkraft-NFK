@@ -84,69 +84,69 @@
 }
 
 @helper RandomizeEq(double totalenergi, char prefix)
- {
- 
-    string omvandling = "";
-    Random rnd = new Random();
-    int rand = rnd.Next(1, 4);
-    double times = 0;
-    if (prefix == 'k')
     {
-        switch (rand)
-        {
-            case 1:
-                omvandling = " koppar kaffe";
-                times = 40;
-                break;
-            case 2:
-                omvandling = " timmar hårtork";
-                times = 0.5;
-                break;
-            case 3:
-                omvandling = " timmar mikrovågsugn";
-                times = 0.7166;
-                break;
-        }
-    }
-    else if (prefix == 'm')
-    {
-        switch (rand)
-        {
-            case 1:
-                omvandling = " timmar med en vattenkokare";
-                times = (0.45);
-                break;
-            case 2:
-                omvandling = " timmar med en dammsugare";
-                times = (0.8333);
-                break;
-            case 3:
-                omvandling = " timmar med en induktionsspis";
-                times = (0.55);
-                break;
-        }
-    }
-    else if (prefix == 'g')
-    {
-        switch (rand)
-        {
-            case 1:
-                omvandling = " timmar bastubad";
-                times = 0.2;
-                break;
-            case 2:
-                omvandling = " timmar med ett strykjärn";
-                times = 0.4166;
-                break;
-            case 3:
-                omvandling = " kg tvätt i en torktummlare";
-                times = 1.2;
-                break;
-        }
-    }
 
-    @Math.Round((totalenergi / 1000) * times, 0)@omvandling
- }
+        string omvandling = "";
+        Random rnd = new Random();
+        int rand = rnd.Next(1, 4);
+        double times = 0;
+        if (prefix == 'k')
+        {
+            switch (rand)
+            {
+                case 1:
+                    omvandling = " koppar kaffe";
+                    times = 40;
+                    break;
+                case 2:
+                    omvandling = " timmar hårtork";
+                    times = 0.5;
+                    break;
+                case 3:
+                    omvandling = " timmar mikrovågsugn";
+                    times = 0.7166;
+                    break;
+            }
+        }
+        else if (prefix == 'm')
+        {
+            switch (rand)
+            {
+                case 1:
+                    omvandling = " timmar med en vattenkokare";
+                    times = (0.45);
+                    break;
+                case 2:
+                    omvandling = " timmar med en dammsugare";
+                    times = (0.8333);
+                    break;
+                case 3:
+                    omvandling = " timmar med en induktionsspis";
+                    times = (0.55);
+                    break;
+            }
+        }
+        else if (prefix == 'g')
+        {
+            switch (rand)
+            {
+                case 1:
+                    omvandling = " timmar bastubad";
+                    times = 0.2;
+                    break;
+                case 2:
+                    omvandling = " timmar med ett strykjärn";
+                    times = 0.4166;
+                    break;
+                case 3:
+                    omvandling = " kg tvätt i en torktummlare";
+                    times = 1.2;
+                    break;
+            }
+        }
+
+        @Math.Round((totalenergi / 1000) * times, 0)@omvandling
+}
 
 @helper DisplayEnergy()
     {
@@ -184,7 +184,7 @@
         else if (totalenergi > 1000)
         {
             <h2> @Math.Round(totalenergi / 1000, 1) kWh</h2>
-            <h4 style="color:gray">Eller @RandomizeEq(totalenergi,'k')</h4>
+            <h4 style="color:gray">Eller @RandomizeEq(totalenergi, 'k')</h4>
         }
         else if (totalenergi > 1000)
         {
@@ -202,7 +202,7 @@
             {
                 ImageConverter converter = new ImageConverter();
                 byte[] imagebytes = (byte[])converter.ConvertTo(elem.Value, typeof(byte[]));
-                <img src="@String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(imagebytes))" class="img-responsive img-rounded" width="300" height="300" />
+                <img src="@String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(imagebytes))" class="img-responsive img-responsive" width="300" height="300" />
             }
         }
 }

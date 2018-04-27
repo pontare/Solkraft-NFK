@@ -165,8 +165,7 @@
         @if ((bool?)Session["compare"] == false || (bool?)Session["compare"] == null)
         {
             <div class="dropdown">
-                @ChartButton()
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style=" background-color:rgb(58, 145, 63)">
+                <button class="btnmunicipal btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                     Välj Kommun
                     <span class="caret"></span>
                 </button>
@@ -174,10 +173,6 @@
                     @GenerateDropdownContents()
                 </ul>
             </div>
-        }
-        else
-        {
-            @ChartButton()
         }
         @DisplayMap()
 
@@ -203,7 +198,9 @@
             @DisplayEnergy()
         }
         <br />
+        
     </div>
+    @ChartButton()
 </div>
 
 @helper DisplayEnergy()
@@ -290,11 +287,11 @@
     {
         if ((bool?)Session["compare"] == true)
         {
-            <a href="/Municipality/SetCompareMode/0" class="btn btn-info" role="button" style=" background-color:rgb(58, 145, 63)">Dölj Diagram</a>
+            <a href="/Municipality/SetCompareMode/0" class="btnmunicipal btn btn-info" role="button">Dölj Diagram</a>
         }
         else
         {
-            <a href="/Municipality/SetCompareMode/1" class="btn btn-info" role="button" style=" background-color:rgb(58, 145, 63)">Visa Diagram</a>
+            <a href="/Municipality/SetCompareMode/1" class="btnmunicipal btn btn-info" role="button">Visa Diagram</a>
         }
 }
 

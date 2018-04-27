@@ -233,11 +233,11 @@
     {
         if ((bool?)Session["compare"] == true)
         {
-            <a href="/Company/SetCompareMode/1" id="btn2company" class="btn btn-info"  role="button" style=" ">Dölj Diagram</a>
+            <a href="/Company/SetCompareMode/1" class="btncompany btn btn-info"  role="button" >Dölj Diagram</a>
         }
         else
         {
-            <a href="/Company/SetCompareMode/1" id="btn2company" class="btn btn-info" role="button" style=" ">Visa Diagram</a>
+            <a href="/Company/SetCompareMode/1" class="btncompany btn btn-info" role="button">Visa Diagram</a>
         }
 }
 
@@ -248,8 +248,7 @@
         @if ((bool?)Session["compare"] == false || (bool?)Session["compare"] == null)
         {
             <div class="dropdown">
-                @ChartButton()
-                <button id="btn2company" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <button class="btncompany btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     Välj Företag
                     <span class="caret"></span>
                 </button>
@@ -258,12 +257,7 @@
                 </ul>
             </div>
         }
-        else
-        {
-            @ChartButton()
-        }
         @DisplayMap()
-
     </div>
     <div class="col-sm-5" style="padding-left:28px" color="#fff">
         <ul class="nav nav-tabs">
@@ -287,4 +281,5 @@
         }
         <br />
     </div>
+    @ChartButton()
 </div>

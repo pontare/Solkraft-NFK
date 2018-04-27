@@ -233,25 +233,23 @@
     {
         if ((bool?)Session["compare"] == true)
         {
-            <a href="/Company/SetCompareMode/1" class="btn btn-info" role="button" style=" background-color:rgb(0, 114, 206)">Dölj Diagram</a>
+            <a href="/Company/SetCompareMode/1" id="btn2company" class="btn btn-info"  role="button" style=" ">Dölj Diagram</a>
         }
         else
         {
-            <a href="/Company/SetCompareMode/1" class="btn btn-info" role="button" style=" background-color:rgb(0, 114, 206)">Visa Diagram</a>
+            <a href="/Company/SetCompareMode/1" id="btn2company" class="btn btn-info" role="button" style=" ">Visa Diagram</a>
         }
 }
 
 
 
-
-
 <div class="row container">
-    <div class=" col-sm-4" style="padding: 15px">
+    <div class=" col-sm-4" style="padding-left: 15px">
         @if ((bool?)Session["compare"] == false || (bool?)Session["compare"] == null)
         {
             <div class="dropdown">
                 @ChartButton()
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style=" background-color:rgb(0, 114, 206)">
+                <button id="btn2company" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     Välj Företag
                     <span class="caret"></span>
                 </button>
@@ -267,7 +265,7 @@
         @DisplayMap()
 
     </div>
-    <div class="col-sm-5" style="padding:20px" color="#fff">
+    <div class="col-sm-5" style="padding-left:28px" color="#fff">
         <ul class="nav nav-tabs">
             @DisplayActive()
         </ul>

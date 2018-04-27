@@ -25,7 +25,17 @@ h3 { /*Kommunnamn font*/
     font-family: "Lato", sans-serif !important;
     font-weight: 500 !important;
     -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
+    transition-duration: 0.1s;
+    position: relative;
+    left: 10%;
+}
+
+#btn2company {
+    background-color: rgb(0, 114, 206) !important;
+    font-family: "Lato", sans-serif !important;
+    font-weight: 500 !important;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.1s;
     position: relative;
     left: 10%;
 }
@@ -37,6 +47,11 @@ h3 { /*Kommunnamn font*/
 
 .btn:hover {
     background-color: rgb(161, 216, 132) !important;
+}
+
+
+#btn2company:hover {
+    background-color: rgb(183, 222, 255) !important;
 }
 
 ul li {
@@ -64,7 +79,4 @@ textarea {
     max-width: 280px;
 }
 
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    background-color: #FFFF00;
-    color: #FFC0CB;
-}
+

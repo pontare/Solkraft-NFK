@@ -55,10 +55,10 @@
             2]);
 
         var options = {
-            title: "Producerade Kilowatttimmar",
-            width: 600,
-            height: 300,
-            bar: { groupWidth: "60%" },
+            title: "Producerade Kilowatttimmar senaste månaden",
+            width: 700,
+            height: 250,
+            bar: { groupWidth: "95%" },
             legend: { position: "none" },
         };
         var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
@@ -95,113 +95,69 @@
 }
 
 @helper RandomizeEq(double totalenergi, char prefix)
+ {
+ 
+    string omvandling = "";
+    Random rnd = new Random();
+    int rand = rnd.Next(1, 4);
+    double times = 0;
+    if (prefix == 'k')
     {
+        switch (rand)
+        {
+            case 1:
+                omvandling = " koppar kaffe";
+                times = 40;
+                break;
+            case 2:
+                omvandling = " timmar hårtork";
+                times = 0.5;
+                break;
+            case 3:
+                omvandling = " timmar mikrovågsugn";
+                times = 0.7166;
+                break;
+        }
+    }
+    else if (prefix == 'm')
+    {
+        switch (rand)
+        {
+            case 1:
+                omvandling = " timmar med en vattenkokare";
+                times = (0.45);
+                break;
+            case 2:
+                omvandling = " timmar med en dammsugare";
+                times = (0.8333);
+                break;
+            case 3:
+                omvandling = " timmar med en induktionsspis";
+                times = (0.55);
+                break;
+        }
+    }
+    else if (prefix == 'g')
+    {
+        switch (rand)
+        {
+            case 1:
+                omvandling = " timmar bastubad";
+                times = 0.2;
+                break;
+            case 2:
+                omvandling = " timmar med ett strykjärn";
+                times = 0.4166;
+                break;
+            case 3:
+                omvandling = " kg tvätt i en torktummlare";
+                times = 1.2;
+                break;
+        }
+    }
 
-        string omvandling = "";
-        Random rnd = new Random();
-        int rand = rnd.Next(1, 4);
-        double times = 0;
-        if (prefix == 'k')
-        {
-            switch (rand)
-            {
-                case 1:
-                    omvandling = " koppar kaffe";
-                    times = 40;
-                    break;
-                case 2:
-                    omvandling = " timmar hårtork";
-                    times = 0.5;
-                    break;
-                case 3:
-                    omvandling = " timmar mikrovågsugn";
-                    times = 0.7166;
-                    break;
-            }
-        }
-        else if (prefix == 'm')
-        {
-            switch (rand)
-            {
-                case 1:
-                    omvandling = " timmar med en vattenkokare";
-                    times = (0.45);
-                    break;
-                case 2:
-                    omvandling = " timmar med en dammsugare";
-                    times = (0.8333);
-                    break;
-                case 3:
-                    omvandling = " timmar med en induktionsspis";
-                    times = (0.55);
-                    break;
-            }
-        }
-        else if (prefix == 'g')
-        {
-            switch (rand)
-            {
-                case 1:
-                    omvandling = " timmar bastubad";
-                    times = 0.2;
-                    break;
-                case 2:
-                    omvandling = " timmar med ett strykjärn";
-                    times = 0.4166;
-                    break;
-                case 3:
-                    omvandling = " kg tvätt i en torktummlare";
-                    times = 1.2;
-                    break;
-            }
-        }
-
-        @Math.Round((totalenergi / 1000) * times, 0)@omvandling
-}
-
-
-<div class="row container">
-    <div class=" col-sm-4" style="padding-left: 15px">
-        @if ((bool?)Session["compare"] == false || (bool?)Session["compare"] == null)
-        {
-            <div class="dropdown">
-                <button class="btnmunicipal btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                    Välj Kommun
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    @GenerateDropdownContents()
-                </ul>
-            </div>
-        }
-        @DisplayMap()
-
-    </div>
-    <div class="col-sm-5" style="padding-left: 28px" color="#fff">
-        <ul class="nav nav-tabs">
-            @DisplayActive()
-        </ul>
-        @if ((bool?)Session["compare"] == true)
-        {
-            @DisplayComparison();
-        }
-        else
-        {
-            if (Session["kommun"] == null)
-            {
-                <h3>Jönköpings Län</h3>
-            }
-            else
-            {
-                <h3>@((string)Session["kommun"])</h3>
-            }
-            @DisplayEnergy()
-        }
-        <br />
-        
-    </div>
-    @ChartButton()
-</div>
+    @Math.Round((totalenergi / 1000) * times, 0)@omvandling
+ }
 
 @helper DisplayEnergy()
     {
@@ -212,15 +168,15 @@
         }
         if ((string)Session["chosenACtion"] == "ShowTotalPower")
         {
-            <h2> </h2>
+            <h2>Energi genererad totalt:</h2>
         }
         else if ((string)Session["chosenACtion"] == "ShowPowerOfMonth")
         {
-            <h2> </h2>
+            <h2>Energi genererad denna månaden:</h2>
         }
         else if ((string)Session["chosenACtion"] == "ShowPowerOfDay")
         {
-            <h2> </h2>
+            <h2>Energi genererad senaste dagen:</h2>
         }
         else if ((string)Session["chosenACtion"] == "Recalculate")
         {
@@ -239,7 +195,7 @@
         else if (totalenergi > 1000)
         {
             <h2> @Math.Round(totalenergi / 1000, 1) kWh</h2>
-            <h4 style="color:gray">Eller @RandomizeEq(totalenergi, 'k')</h4>
+            <h4 style="color:gray">Eller @RandomizeEq(totalenergi,'k')</h4>
         }
         else if (totalenergi > 1000)
         {
@@ -287,12 +243,58 @@
     {
         if ((bool?)Session["compare"] == true)
         {
-            <a href="/Municipality/SetCompareMode/0" class="btnmunicipal btn btn-info" role="button">Dölj Diagram</a>
+            <a href="/Municipality/SetCompareMode/0" class="btn btn-info" role="button" style=" background-color:rgb(58, 145, 63)">Dölj Diagram</a>
         }
         else
         {
-            <a href="/Municipality/SetCompareMode/1" class="btnmunicipal btn btn-info" role="button">Visa Diagram</a>
+            <a href="/Municipality/SetCompareMode/1" class="btn btn-info" role="button" style=" background-color:rgb(58, 145, 63)">Visa Diagram</a>
         }
 }
 
 <!--------HTML CODE BEGINS HERE---------->
+
+<div class="row container">
+    <div class=" col-sm-4" style="padding: 15px">
+        @if ((bool?)Session["compare"] == false || (bool?)Session["compare"] == null)
+        {
+            <div class="dropdown">
+                @ChartButton()
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style=" background-color:rgb(58, 145, 63)">
+                    Välj Kommun
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    @GenerateDropdownContents()
+                </ul>
+            </div>
+        }
+        else
+        {
+            @ChartButton()
+        }
+        @DisplayMap()
+
+    </div>
+    <div class="col-sm-5" style="padding:20px" color="#fff">
+        <ul class="nav nav-tabs">
+            @DisplayActive()
+        </ul>
+        @if ((bool?)Session["compare"] == true)
+        {
+            @DisplayComparison();
+        }
+        else
+        {
+            if (Session["kommun"] == null)
+            {
+                <h3>Jönköpings Län</h3>
+            }
+            else
+            {
+                <h3>@((string)Session["kommun"])</h3>
+            }
+            @DisplayEnergy()
+        }
+        <br />
+    </div>
+</div>

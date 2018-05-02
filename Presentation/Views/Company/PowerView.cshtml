@@ -10,7 +10,7 @@
 @{
     Dictionary<string, double> companyPowerDict = new Dictionary<string, double>();
     Dictionary<string, Dictionary<string,double>> dayCompanyPowerDict = new Dictionary<string, Dictionary<string,double>>();
-    List<string> företag = new List<string>() { "Husqvarna", "CyberCom" };
+    List<string> företag = new List<string>() { "Husqvarna"};
     foreach (var elem in företag)
     {
         companyPowerDict.Add(elem, 0);
@@ -31,6 +31,10 @@
     var chart = null;
     var options = null;
     var dayCompanyPowerJson = @Html.Raw(Json.Encode(Model));
+    var companPowerDict = ;
+    for (var i = 0; i < dayCompanyPowerJson.length; i++) {
+        companPowerDict.push
+    }
 
     $("[type='number']").keypress(function (evt) {
         evt.preventDefault();
@@ -38,6 +42,23 @@
     $(window).resize(function () {
         chart.draw(data, options);
     })
+
+    function plucky(key, obj) {
+
+        var sum = 0;
+
+        for (var prop in obj) {
+            if (obj.hasOwnProperty(prop) && key === prop) {
+                sum += obj[prop];
+            }
+            else if (Object.prototype.toString.call(obj[prop]) === '[object Object]') {
+                sum += plucky(key, obj[prop]);
+            }
+        }
+
+        return sum;
+    }
+
     function drawChart() {
 
         data = new google.visualization.DataTable();
@@ -71,17 +92,17 @@
         if (timeUnit < 10) {
             timeUnit = "0" + timeUnit;
         }
-        if (@Session["chosenAction"] == "ShowPowerOfMonth") {
+        if ("@Session["chosenAction"]" == "ShowPowerOfMonth") {
             for (var i = 0; i < dayCompanyPowerJson.length; i++) {
                 if (dayCompanyPowerJson[i].Day == timeUnit) {
-                    data.addRow([dayCompanyPowerJson[i].Företag, Math.round(dayCompanyPowerJson[i].Energi / 1000)]);
+                    data.addRow([dayCompanyPowerJson[i].Företag, plucky(dayCompanyPowerJson[i].Företag, Math.round(dayCompanyPowerJson[i].Energi / 1000))]);
                 }
             }
         }
-        else if (@Session["chosenAction"] == "ShowPowerOfYear") {
+        else if ("@Session["chosenAction"]" == "ShowPowerOfYear") {
             for (var i = 0; i < dayCompanyPowerJson.length; i++) {
                 if (dayCompanyPowerJson[i].Month == timeUnit) {
-                    data.addRow([dayCompanyPowerJson[i].Företag, Math.round(dayCompanyPowerJson[i].Energi / 1000)]);
+                    data.addRow([dayCompanyPowerJson[i].Företag, plucky(dayCompanyPowerJson[i].Företag,Math.round(dayCompanyPowerJson[i].Energi / 1000))]);
                 }
             }
         }

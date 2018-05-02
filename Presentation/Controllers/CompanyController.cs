@@ -56,5 +56,10 @@ namespace Presentation.Controllers
             return RedirectToAction((string)Session["chosenACtion"]);
 
         }
+        public ActionResult SetDay(int id)
+        {
+            Session["day"] = id;
+            return new EmptyResult();
+        }
     }
 }

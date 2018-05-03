@@ -9,8 +9,9 @@
 
 @{
     Dictionary<string, double> companyPowerDict = new Dictionary<string, double>();
-    Dictionary<string, Dictionary<string,double>> dayCompanyPowerDict = new Dictionary<string, Dictionary<string,double>>();
+    Dictionary<string, Dictionary<string,double>> monthCompanyPowerDict = new Dictionary<string, Dictionary<string,double>>();
     List<string> företag = new List<string>() { "Husqvarna"};
+    var month = "";
     foreach (var elem in företag)
     {
         companyPowerDict.Add(elem, 0);
@@ -18,8 +19,25 @@
     foreach (var elem in Model)
     {
         companyPowerDict[elem.Företag] += Math.Round(elem.Energi / 1000);
-        dayCompanyPowerDict[elem.Day] = companyPowerDict;
     }
+
+    Dictionary<string, double> monthlyCompanyPowerDict = new Dictionary<string, double>();
+    foreach (var elem in Model)
+    {
+        if(elem.Month != month)
+        {
+            monthlyCompanyPowerDict.Clear();
+            foreach (var elem1 in företag)
+            {
+                monthlyCompanyPowerDict.Add(elem1, 0);
+            }
+        }
+        monthlyCompanyPowerDict[elem.Företag] += Math.Round(elem.Energi / 1000);
+        monthCompanyPowerDict[elem.Month] = new Dictionary<string, double>(monthlyCompanyPowerDict);
+        month = elem.Month;
+    }
+
+
 }
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -30,11 +48,22 @@
     var data = null;
     var chart = null;
     var options = null;
-    var dayCompanyPowerJson = @Html.Raw(Json.Encode(Model));
-    var companPowerDict = ;
-    for (var i = 0; i < dayCompanyPowerJson.length; i++) {
-        companPowerDict.push
+    var ModelJson = @Html.Raw(Json.Encode(Model));
+    var monthSummedList = []
+    @foreach(var monthelem in monthCompanyPowerDict)
+    {
+        foreach(var record in monthelem.Value)
+        {
+            <text>
+                monthSummedList.push({
+                    month: "@monthelem.Key",
+                    energy: @record.Value,
+                    company: "@record.Key",
+                })
+            </text>
+        }
     }
+
 
     $("[type='number']").keypress(function (evt) {
         evt.preventDefault();
@@ -43,24 +72,9 @@
         chart.draw(data, options);
     })
 
-    function plucky(key, obj) {
-
-        var sum = 0;
-
-        for (var prop in obj) {
-            if (obj.hasOwnProperty(prop) && key === prop) {
-                sum += obj[prop];
-            }
-            else if (Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-                sum += plucky(key, obj[prop]);
-            }
-        }
-
-        return sum;
-    }
+    var timeUnit = document.getElementById("timeInput").value;
 
     function drawChart() {
-
         data = new google.visualization.DataTable();
         data.addColumn("string", "Företag");
         data.addColumn("number", "Energi");
@@ -70,8 +84,6 @@
                 data.addRow(["@elem.Key",@elem.Value]);
             </text>
         }
-
-
         options = {
             title: "Producerade kilowatttimmar",
             bar: { groupWidth: "50%" },
@@ -87,39 +99,38 @@
         chart.draw(data, options);
     }
     function changeChart() {
-        var timeUnit = document.getElementById("timeInput").value; 
+
         data.removeRows(0, data.getNumberOfRows());
         if (timeUnit < 10) {
             timeUnit = "0" + timeUnit;
         }
         if ("@Session["chosenAction"]" == "ShowPowerOfMonth") {
-            for (var i = 0; i < dayCompanyPowerJson.length; i++) {
-                if (dayCompanyPowerJson[i].Day == timeUnit) {
-                    data.addRow([dayCompanyPowerJson[i].Företag, plucky(dayCompanyPowerJson[i].Företag, Math.round(dayCompanyPowerJson[i].Energi / 1000))]);
+            for (var i = 0; i < ModelJson.length; i++) {
+                if (ModelJson[i].Day == timeUnit) {
+                    data.addRow([ModelJson[i].Företag, Math.round(ModelJson[i].Energi / 1000)]);
                 }
             }
         }
         else if ("@Session["chosenAction"]" == "ShowPowerOfYear") {
-            for (var i = 0; i < dayCompanyPowerJson.length; i++) {
-                if (dayCompanyPowerJson[i].Month == timeUnit) {
-                    data.addRow([dayCompanyPowerJson[i].Företag, plucky(dayCompanyPowerJson[i].Företag,Math.round(dayCompanyPowerJson[i].Energi / 1000))]);
+            for (var i = 0; i < monthSummedList.length; i++) {
+                if (monthSummedList[i].month == timeUnit) {
+                    data.addRow([monthSummedList[i].company, monthSummedList[i].energy]);
                 }
             }
         }
-
         chart.draw(data, options)
     }
 </script>
 
 @helper DisplayActive()
     {
-        if ((string)Session["chosenACtion"] == "ShowTotalPower")
+        if ((string)Session["chosenACtion"] == "ShowPowerOfYear")
         {
-            <li class="active"><a href="/Company/ShowTotalPower"> Visa totalt </a></li>
+            <li class="active"><a href="/Company/ShowPowerOfYear"> Visa senaste året </a></li>
         }
-        else if ((string)Session["chosenACtion"] != "ShowTotalPower")
+        else if ((string)Session["chosenACtion"] != "ShowPowerOfYear")
         {
-            <li><a href="/Company/ShowTotalPower"> Visa totalt </a></li>
+            <li><a href="/Company/ShowPowerOfYear"> Visa senaste året </a></li>
         }
         if ((string)Session["ChosenACtion"] == "ShowPowerOfMonth")
         {
@@ -211,9 +222,9 @@
         {
             totalenergi += elem.Energi;
         }
-        if ((string)Session["chosenACtion"] == "ShowTotalPower")
+        if ((string)Session["chosenACtion"] == "ShowPowerOfYear")
         {
-            <h2>Energi genererad totalt:</h2>
+            <h2>Energi genererad senaste året:</h2>
         }
         else if ((string)Session["chosenACtion"] == "ShowPowerOfMonth")
         {
@@ -346,13 +357,13 @@
         <br />
     </div>
     <div class="col-sm-1" style="margin-top: 5%">
-        @if ((string)Session["chosenAction"] == "ShowPowerOfYear")
+        @if ((string)Session["chosenAction"] == "ShowPowerOfYear" && (bool?)Session["compare"] == true)
         {
-            <span class="text-info"> Month: </span> <input class="form-control" min="1" max="@Model.Max(x => x.Month)." style=" max-width: 75px" onchange="changeChart()" type="number" id="timeInput" />
+            <span class="text-info"> Month: </span> <input class="form-control" min="@Model.Min(x => x.Month)" max="@Model.Max(x => x.Month)" style=" max-width: 75px" onchange="changeChart()" type="number" id="timeInput" />
         }
-        @if ((string)Session["chosenAction"] == "ShowPowerOfMonth")
+        @if ((string)Session["chosenAction"] == "ShowPowerOfMonth" && (bool?)Session["compare"] == true)
         {
-            <span class="text-info"> Day: </span> <input class="form-control" min="1" max="@Model.Max(x => x.Day)" style=" max-width: 75px" onchange="changeChart()" type="number" id="timeInput" />
+            <span class="text-info"> Day: </span> <input class="form-control" min="@Model.Min(x => x.Day)" max="@Model.Max(x => x.Day)" style=" max-width: 75px" onchange="changeChart()" type="number" id="timeInput" />
         }
     </div>
         

@@ -6,20 +6,22 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#options">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand">SolCalc</a>
             </div>
-            <ul class="collapse navbar-collapse nav navbar-nav" id="options">
+
+            <ul class="navbar-collapse collapse nav navbar-nav" id="myNavbar">
                 <li><a href="/Municipality/ShowPowerOfDay">Kommun</a></li>
                 <li><a href="/Company/ShowPowerOfDay">Företag</a></li>
             </ul>

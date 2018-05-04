@@ -6,108 +6,52 @@
 @using Resources;
 
 @model List<ProducedCompanyPower>
-
+<!-------------try.get true/false----------->
 @{
     Dictionary<string, double> companyPowerDict = new Dictionary<string, double>();
-    Dictionary<string, Dictionary<string,double>> dayCompanyPowerDict = new Dictionary<string, Dictionary<string,double>>();
-    List<string> företag = new List<string>() { "Husqvarna"};
+    List<string> företag = new List<string>() { "Husqvarna" };
     foreach (var elem in företag)
     {
         companyPowerDict.Add(elem, 0);
     }
     foreach (var elem in Model)
     {
-        companyPowerDict[elem.Företag] += Math.Round(elem.Energi / 1000);
-        dayCompanyPowerDict[elem.Day] = companyPowerDict;
+        companyPowerDict[elem.Företag] += Math.Round(elem.Energi);
     }
+
 }
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
 <script type="text/javascript">
     google.charts.load("current", { packages: ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);
-    var data = null;
-    var chart = null;
-    var options = null;
-    var dayCompanyPowerJson = @Html.Raw(Json.Encode(Model));
-    var companPowerDict = ;
-    for (var i = 0; i < dayCompanyPowerJson.length; i++) {
-        companPowerDict.push
-    }
-
-    $("[type='number']").keypress(function (evt) {
-        evt.preventDefault();
-    });
-    $(window).resize(function () {
-        chart.draw(data, options);
-    })
-
-    function plucky(key, obj) {
-
-        var sum = 0;
-
-        for (var prop in obj) {
-            if (obj.hasOwnProperty(prop) && key === prop) {
-                sum += obj[prop];
-            }
-            else if (Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-                sum += plucky(key, obj[prop]);
-            }
-        }
-
-        return sum;
-    }
-
     function drawChart() {
 
-        data = new google.visualization.DataTable();
-        data.addColumn("string", "Företag");
-        data.addColumn("number", "Energi");
-        @foreach (var elem in companyPowerDict)
-        {
-            <text>
-                data.addRow(["@elem.Key",@elem.Value]);
-            </text>
-        }
+            var data = google.visualization.arrayToDataTable([
+                ["Företag", "Kilowatttimmar", { role: "style" }],
+                ["Husqvarna",@companyPowerDict["Husqvarna"], "#0072ce"]
+            ]);
 
 
-        options = {
-            title: "Producerade kilowatttimmar",
-            bar: { groupWidth: "50%" },
-            legend: { position: "none" },
-            animation: {
-                duration: 750,
-                easing: 'out'
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
             },
-            vAxis: { minValue: 0, maxValue: 200 }
+            2]);
+
+        var options = {
+            title: "Producerade Kilowatttimmar",
+            width: 400,
+            height: 290,
+            bar: { groupWidth: "95%" },
+            legend: { position: "none" },
         };
-
-        chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-        chart.draw(data, options);
-    }
-    function changeChart() {
-        var timeUnit = document.getElementById("timeInput").value; 
-        data.removeRows(0, data.getNumberOfRows());
-        if (timeUnit < 10) {
-            timeUnit = "0" + timeUnit;
-        }
-        if ("@Session["chosenAction"]" == "ShowPowerOfMonth") {
-            for (var i = 0; i < dayCompanyPowerJson.length; i++) {
-                if (dayCompanyPowerJson[i].Day == timeUnit) {
-                    data.addRow([dayCompanyPowerJson[i].Företag, plucky(dayCompanyPowerJson[i].Företag, Math.round(dayCompanyPowerJson[i].Energi / 1000))]);
-                }
-            }
-        }
-        else if ("@Session["chosenAction"]" == "ShowPowerOfYear") {
-            for (var i = 0; i < dayCompanyPowerJson.length; i++) {
-                if (dayCompanyPowerJson[i].Month == timeUnit) {
-                    data.addRow([dayCompanyPowerJson[i].Företag, plucky(dayCompanyPowerJson[i].Företag,Math.round(dayCompanyPowerJson[i].Energi / 1000))]);
-                }
-            }
-        }
-
-        chart.draw(data, options)
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
     }
 </script>
 
@@ -140,69 +84,69 @@
 }
 
 @helper RandomizeEq(double totalenergi, char prefix)
- {
- 
-    string omvandling = "";
-    Random rnd = new Random();
-    int rand = rnd.Next(1, 4);
-    double times = 0;
-    if (prefix == 'k')
     {
-        switch (rand)
-        {
-            case 1:
-                omvandling = " koppar kaffe";
-                times = 40;
-                break;
-            case 2:
-                omvandling = " timmar hårtork";
-                times = 0.5;
-                break;
-            case 3:
-                omvandling = " timmar mikrovågsugn";
-                times = 0.7166;
-                break;
-        }
-    }
-    else if (prefix == 'm')
-    {
-        switch (rand)
-        {
-            case 1:
-                omvandling = " timmar med en vattenkokare";
-                times = (0.45);
-                break;
-            case 2:
-                omvandling = " timmar med en dammsugare";
-                times = (0.8333);
-                break;
-            case 3:
-                omvandling = " timmar med en induktionsspis";
-                times = (0.55);
-                break;
-        }
-    }
-    else if (prefix == 'g')
-    {
-        switch (rand)
-        {
-            case 1:
-                omvandling = " timmar bastubad";
-                times = 0.2;
-                break;
-            case 2:
-                omvandling = " timmar med ett strykjärn";
-                times = 0.4166;
-                break;
-            case 3:
-                omvandling = " kg tvätt i en torktummlare";
-                times = 1.2;
-                break;
-        }
-    }
 
-    @Math.Round((totalenergi / 1000) * times, 0)@omvandling
- }
+        string omvandling = "";
+        Random rnd = new Random();
+        int rand = rnd.Next(1, 4);
+        double times = 0;
+        if (prefix == 'k')
+        {
+            switch (rand)
+            {
+                case 1:
+                    omvandling = " koppar kaffe";
+                    times = 40;
+                    break;
+                case 2:
+                    omvandling = " timmar hårtork";
+                    times = 0.5;
+                    break;
+                case 3:
+                    omvandling = " timmar mikrovågsugn";
+                    times = 0.7166;
+                    break;
+            }
+        }
+        else if (prefix == 'm')
+        {
+            switch (rand)
+            {
+                case 1:
+                    omvandling = " timmar med en vattenkokare";
+                    times = (0.45);
+                    break;
+                case 2:
+                    omvandling = " timmar med en dammsugare";
+                    times = (0.8333);
+                    break;
+                case 3:
+                    omvandling = " timmar med en induktionsspis";
+                    times = (0.55);
+                    break;
+            }
+        }
+        else if (prefix == 'g')
+        {
+            switch (rand)
+            {
+                case 1:
+                    omvandling = " timmar bastubad";
+                    times = 0.2;
+                    break;
+                case 2:
+                    omvandling = " timmar med ett strykjärn";
+                    times = 0.4166;
+                    break;
+                case 3:
+                    omvandling = " kg tvätt i en torktummlare";
+                    times = 1.2;
+                    break;
+            }
+        }
+
+        @Math.Round((totalenergi / 1000) * times, 0)@omvandling
+}
 
 @helper DisplayEnergy()
     {
@@ -240,7 +184,7 @@
         else if (totalenergi > 1000)
         {
             <h2> @Math.Round(totalenergi / 1000, 1) kWh</h2>
-            <h4 style="color:gray">Eller @RandomizeEq(totalenergi,'k')</h4>
+            <h4 style="color:gray">Eller @RandomizeEq(totalenergi, 'k')</h4>
         }
         else if (totalenergi > 1000)
         {
@@ -253,11 +197,12 @@
         ResourceSet resourceSet = Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
         foreach (DictionaryEntry elem in resourceSet)
         {
-            if ((string)elem.Key == (string)Session["företag"])
+            var kommun = Session["företag"];
+            if ((string)elem.Key == (string)Session["företag"] || (Session["företag"] == null && (string)elem.Key == "alla_kommuner"))
             {
                 ImageConverter converter = new ImageConverter();
                 byte[] imagebytes = (byte[])converter.ConvertTo(elem.Value, typeof(byte[]));
-                <img src="@String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(imagebytes))" class="img-responsive img-rounded" width="300" height="300" />
+                <img src="@String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(imagebytes))" class="img-responsive img-responsive" width="300" height="300" />
             }
         }
 }
@@ -288,41 +233,42 @@
     {
         if ((bool?)Session["compare"] == true)
         {
-            <a href="/Company/SetCompareMode/1" class="btn btn-info" role="button" style=" background-color:rgb(0, 114, 206)">Dölj Diagram</a>
+            <a href="/Company/SetCompareMode/1" class="btncompany btn btn-info" role="button">Dölj Diagram</a>
         }
         else
         {
-            <a href="/Company/SetCompareMode/1" class="btn btn-info" role="button" style=" background-color:rgb(0, 114, 206)">Visa Diagram</a>
+            <a href="/Company/SetCompareMode/1" class="btncompany btn btn-info" role="button">Visa Diagram</a>
         }
 }
 
 
 
-
-
 <div class="row container">
-    <div class=" col-sm-5" style="padding: 15px">
+    <div class=" col-sm-4" style="padding-left: 15px">
         @if ((bool?)Session["compare"] == false || (bool?)Session["compare"] == null)
-        {
-            <div class="dropdown">
-                @ChartButton()
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style=" background-color:rgb(0, 114, 206)">
-                    Välj Företag
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    @GenerateDropdownContents()
-                </ul>
-            </div>
-        }
-        else
-        {
-            @ChartButton()
-        }
+    {
+        <div class="dropdown">
+            <button class="btncompany btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Välj Företag
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                @GenerateDropdownContents()
+            </ul>
+        </div>
+}
         @DisplayMap()
 
+        <button type="button" class="infobtn btn collapsed" data-toggle="collapse" style="padding-left:75px" data-target="#info"> Hur det fungerar </button>
+        <div class="infodiv collapse" id="info">
+            <p class="text-info">
+                Observera att datan som presenteras på denna sida inte är fullständigt exakt och momentan.
+                Observera att datan som presenteras på denna sida inte är fullständigt exakt och momentan.
+            </p>
+        </div>
+
     </div>
-    <div class="col-sm-6" style="padding:20px" color="#fff">
+    <div class="col-sm-5" style="padding-left:28px" color="#fff">
         <ul class="nav nav-tabs">
             @DisplayActive()
         </ul>
@@ -342,18 +288,7 @@
             }
             @DisplayEnergy()
         }
-
         <br />
     </div>
-    <div class="col-sm-1" style="margin-top: 5%">
-        @if ((string)Session["chosenAction"] == "ShowPowerOfYear")
-        {
-            <span class="text-info"> Month: </span> <input class="form-control" min="1" max="@Model.Max(x => x.Month)." style=" max-width: 75px" onchange="changeChart()" type="number" id="timeInput" />
-        }
-        @if ((string)Session["chosenAction"] == "ShowPowerOfMonth")
-        {
-            <span class="text-info"> Day: </span> <input class="form-control" min="1" max="@Model.Max(x => x.Day)" style=" max-width: 75px" onchange="changeChart()" type="number" id="timeInput" />
-        }
-    </div>
-        
+    @ChartButton()
 </div>

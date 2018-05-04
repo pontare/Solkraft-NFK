@@ -9,8 +9,8 @@
 <!-------------try.get true/false----------->
 @{
     Dictionary<string, double> companyPowerDict = new Dictionary<string, double>();
-    Dictionary<string, Dictionary<string,double>> monthCompanyPowerDict = new Dictionary<string, Dictionary<string,double>>();
-    List<string> företag = new List<string>() { "Husqvarna"};
+    Dictionary<string, Dictionary<string, double>> monthCompanyPowerDict = new Dictionary<string, Dictionary<string, double>>();
+    List<string> företag = new List<string>() { "Husqvarna" };
     var month = "";
     foreach (var elem in företag)
     {
@@ -24,7 +24,7 @@
     Dictionary<string, double> monthlyCompanyPowerDict = new Dictionary<string, double>();
     foreach (var elem in Model)
     {
-        if(elem.Month != month)
+        if (elem.Month != month)
         {
             monthlyCompanyPowerDict.Clear();
             foreach (var elem1 in företag)
@@ -50,6 +50,7 @@
     var ModelJson = @Html.Raw(Json.Encode(Model));
     var monthSummedList = []
     @foreach(var monthelem in monthCompanyPowerDict)
+
     {
         foreach(var record in monthelem.Value)
         {
@@ -71,7 +72,6 @@
         chart.draw(data, options);
     })
 
-    var timeUnit = document.getElementById("timeInput").value;
 
     function drawChart() {
         data = new google.visualization.DataTable();
@@ -87,13 +87,19 @@
             title: "Producerade kilowatttimmar",
             bar: { groupWidth: "50%" },
             legend: { position: "none" },
+            animation: {
+                duration: 750,
+                easing: 'out'
+            },
+            vAxis: { minValue: 0, maxValue: 200 }
         };
 
         chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
         chart.draw(data, options);
     }
     function changeChart() {
-
+        var timeInput = document.getElementById("timeInput");
+        var timeUnit = timeInput.value;
         data.removeRows(0, data.getNumberOfRows());
         if (timeUnit < 10) {
             timeUnit = "0" + timeUnit;
@@ -302,22 +308,32 @@
         }
 }
 
-
+@helper Timeinput()
+    {
+        if ((string)Session["chosenAction"] == "ShowPowerOfYear" && (bool?)Session["compare"] == true)
+        {
+            <span class="text-info"> Month: </span> <input class="form-control" min="@Model.Min(x => x.Month)" max="@Model.Max(x => x.Month)" onchange="changeChart()" type="number" id="timeInput" style="max-width: 75px" />
+        }
+        if ((string)Session["chosenAction"] == "ShowPowerOfMonth" && (bool?)Session["compare"] == true)
+        {
+            <span class="text-info"> Day: </span> <input class="form-control" min="@Model.Min(x => x.Day)" max="@Model.Max(x => x.Day)" onchange="changeChart()" type="number" id="timeInput" style="max-width: 75px"/>
+        }
+}
 
 <div class="row container">
-    <div class=" col-sm-5" style="padding: 15px">
+    <div class=" col-sm-4" style="padding: 15px">
         @if ((bool?)Session["compare"] == false || (bool?)Session["compare"] == null)
-    {
-        <div class="dropdown">
-            <button class="btncompany btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                Välj Företag
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                @GenerateDropdownContents()
-            </ul>
-        </div>
-}
+        {
+            <div class="dropdown">
+                <button class="btncompany btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Välj Företag
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    @GenerateDropdownContents()
+                </ul>
+            </div>
+        }
         @DisplayMap()
 
         <button type="button" class="infobtn btn collapsed" data-toggle="collapse" style="padding-left:75px" data-target="#info"> Hur det fungerar </button>
@@ -351,15 +367,14 @@
         }
         <br />
     </div>
-    <div class="col-sm-1" style="margin-top: 5%">
-        @if ((string)Session["chosenAction"] == "ShowPowerOfYear" && (bool?)Session["compare"] == true)
-        {
-            <span class="text-info"> Month: </span> <input class="form-control" min="@Model.Min(x => x.Month)" max="@Model.Max(x => x.Month)" style=" max-width: 75px" onchange="changeChart()" type="number" id="timeInput" />
-        }
-        @if ((string)Session["chosenAction"] == "ShowPowerOfMonth" && (bool?)Session["compare"] == true)
-        {
-            <span class="text-info"> Day: </span> <input class="form-control" min="@Model.Min(x => x.Day)" max="@Model.Max(x => x.Day)" style=" max-width: 75px" onchange="changeChart()" type="number" id="timeInput" />
-        }
+
+    <div class="col-sm-2" style="margin-top:2%">
+        <div class="row">
+            <div class="col"> @ChartButton() </div>
+        </div>
+        <div class="row" style="padding-top: 15px">
+            <div class="col"> @Timeinput() </div>
+        </div>
     </div>
-        
+
 </div>

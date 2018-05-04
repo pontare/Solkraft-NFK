@@ -9,15 +9,34 @@
 <!-------------try.get true/false----------->
 @{
     Dictionary<string, double> companyPowerDict = new Dictionary<string, double>();
-    List<string> företag = new List<string>() { "Husqvarna" };
+    Dictionary<string, Dictionary<string,double>> monthCompanyPowerDict = new Dictionary<string, Dictionary<string,double>>();
+    List<string> företag = new List<string>() { "Husqvarna"};
+    var month = "";
     foreach (var elem in företag)
     {
         companyPowerDict.Add(elem, 0);
     }
     foreach (var elem in Model)
     {
-        companyPowerDict[elem.Företag] += Math.Round(elem.Energi);
+        companyPowerDict[elem.Företag] += Math.Round(elem.Energi / 1000);
     }
+
+    Dictionary<string, double> monthlyCompanyPowerDict = new Dictionary<string, double>();
+    foreach (var elem in Model)
+    {
+        if(elem.Month != month)
+        {
+            monthlyCompanyPowerDict.Clear();
+            foreach (var elem1 in företag)
+            {
+                monthlyCompanyPowerDict.Add(elem1, 0);
+            }
+        }
+        monthlyCompanyPowerDict[elem.Företag] += Math.Round(elem.Energi / 1000);
+        monthCompanyPowerDict[elem.Month] = new Dictionary<string, double>(monthlyCompanyPowerDict);
+        month = elem.Month;
+    }
+
 
 }
 
@@ -25,45 +44,87 @@
 <script type="text/javascript">
     google.charts.load("current", { packages: ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);
+    var data = null;
+    var chart = null;
+    var options = null;
+    var ModelJson = @Html.Raw(Json.Encode(Model));
+    var monthSummedList = []
+    @foreach(var monthelem in monthCompanyPowerDict)
+    {
+        foreach(var record in monthelem.Value)
+        {
+            <text>
+                monthSummedList.push({
+                    month: "@monthelem.Key",
+                    energy: @record.Value,
+                    company: "@record.Key",
+                })
+            </text>
+        }
+    }
+
+
+    $("[type='number']").keypress(function (evt) {
+        evt.preventDefault();
+    });
+    $(window).resize(function () {
+        chart.draw(data, options);
+    })
+
+    var timeUnit = document.getElementById("timeInput").value;
+
     function drawChart() {
-
-            var data = google.visualization.arrayToDataTable([
-                ["Företag", "Kilowatttimmar", { role: "style" }],
-                ["Husqvarna",@companyPowerDict["Husqvarna"], "#0072ce"]
-            ]);
-
-
-        var view = new google.visualization.DataView(data);
-        view.setColumns([0, 1,
-            {
-                calc: "stringify",
-                sourceColumn: 1,
-                type: "string",
-                role: "annotation"
-            },
-            2]);
-
-        var options = {
-            title: "Producerade Kilowatttimmar",
-            width: 400,
-            height: 290,
-            bar: { groupWidth: "95%" },
+        data = new google.visualization.DataTable();
+        data.addColumn("string", "Företag");
+        data.addColumn("number", "Energi");
+        @foreach (var elem in companyPowerDict)
+        {
+            <text>
+                data.addRow(["@elem.Key",@elem.Value]);
+            </text>
+        }
+        options = {
+            title: "Producerade kilowatttimmar",
+            bar: { groupWidth: "50%" },
             legend: { position: "none" },
         };
-        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-        chart.draw(view, options);
+
+        chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(data, options);
+    }
+    function changeChart() {
+
+        data.removeRows(0, data.getNumberOfRows());
+        if (timeUnit < 10) {
+            timeUnit = "0" + timeUnit;
+        }
+        if ("@Session["chosenAction"]" == "ShowPowerOfMonth") {
+            for (var i = 0; i < ModelJson.length; i++) {
+                if (ModelJson[i].Day == timeUnit) {
+                    data.addRow([ModelJson[i].Företag, Math.round(ModelJson[i].Energi / 1000)]);
+                }
+            }
+        }
+        else if ("@Session["chosenAction"]" == "ShowPowerOfYear") {
+            for (var i = 0; i < monthSummedList.length; i++) {
+                if (monthSummedList[i].month == timeUnit) {
+                    data.addRow([monthSummedList[i].company, monthSummedList[i].energy]);
+                }
+            }
+        }
+        chart.draw(data, options)
     }
 </script>
 
 @helper DisplayActive()
     {
-        if ((string)Session["chosenACtion"] == "ShowTotalPower")
+        if ((string)Session["chosenACtion"] == "ShowPowerOfYear")
         {
-            <li class="active"><a href="/Company/ShowTotalPower"> Visa totalt </a></li>
+            <li class="active"><a href="/Company/ShowPowerOfYear"> Visa senaste året </a></li>
         }
-        else if ((string)Session["chosenACtion"] != "ShowTotalPower")
+        else if ((string)Session["chosenACtion"] != "ShowPowerOfYear")
         {
-            <li><a href="/Company/ShowTotalPower"> Visa totalt </a></li>
+            <li><a href="/Company/ShowPowerOfYear"> Visa senaste året </a></li>
         }
         if ((string)Session["ChosenACtion"] == "ShowPowerOfMonth")
         {
@@ -155,9 +216,9 @@
         {
             totalenergi += elem.Energi;
         }
-        if ((string)Session["chosenACtion"] == "ShowTotalPower")
+        if ((string)Session["chosenACtion"] == "ShowPowerOfYear")
         {
-            <h2>Energi genererad totalt:</h2>
+            <h2>Energi genererad senaste året:</h2>
         }
         else if ((string)Session["chosenACtion"] == "ShowPowerOfMonth")
         {
@@ -244,7 +305,7 @@
 
 
 <div class="row container">
-    <div class=" col-sm-4" style="padding-left: 15px">
+    <div class=" col-sm-5" style="padding: 15px">
         @if ((bool?)Session["compare"] == false || (bool?)Session["compare"] == null)
     {
         <div class="dropdown">
@@ -268,7 +329,7 @@
         </div>
 
     </div>
-    <div class="col-sm-5" style="padding-left:28px" color="#fff">
+    <div class="col-sm-6" style="padding:20px" color="#fff">
         <ul class="nav nav-tabs">
             @DisplayActive()
         </ul>
@@ -290,5 +351,15 @@
         }
         <br />
     </div>
-    @ChartButton()
+    <div class="col-sm-1" style="margin-top: 5%">
+        @if ((string)Session["chosenAction"] == "ShowPowerOfYear" && (bool?)Session["compare"] == true)
+        {
+            <span class="text-info"> Month: </span> <input class="form-control" min="@Model.Min(x => x.Month)" max="@Model.Max(x => x.Month)" style=" max-width: 75px" onchange="changeChart()" type="number" id="timeInput" />
+        }
+        @if ((string)Session["chosenAction"] == "ShowPowerOfMonth" && (bool?)Session["compare"] == true)
+        {
+            <span class="text-info"> Day: </span> <input class="form-control" min="@Model.Min(x => x.Day)" max="@Model.Max(x => x.Day)" style=" max-width: 75px" onchange="changeChart()" type="number" id="timeInput" />
+        }
+    </div>
+        
 </div>
